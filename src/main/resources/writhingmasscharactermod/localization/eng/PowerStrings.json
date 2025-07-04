@@ -1,0 +1,51 @@
+{
+  "${modID}:PowerID": {
+    "NAME": "Ultimate Power",
+    "DESCRIPTIONS": [
+      "You are Very Cool and Strong."
+    ]
+  },
+  "${modID}:Bleed": {
+    "NAME": "Bleed",
+    "DESCRIPTIONS": [
+      "When you lose HP, lose #b",
+      " more. Reduces by #b1 each turn."
+    ]
+  },
+  "${modID}:Resilience": {
+    "NAME": "Resilience",
+    "DESCRIPTIONS": [
+      "When #yMalleable is triggered, increase #yBlock gain by #b",
+      " next time #yMalleable is triggered in the same turn."
+    ]
+  },
+  "${modID}:SoulBond": {
+    "NAME": "Soul Bond",
+    "DESCRIPTIONS": [
+      "Whenever you lose HP, enemy loses equal HP.",
+      "Whenever you lose HP, enemy loses equal HP #b",
+      " times."
+    ]
+  },
+  "${modID}:Vitality": {
+    "NAME": "Vitality",
+    "DESCRIPTIONS": [
+      "Whenever you heal HP, increase HP gain by #b",
+      "."
+    ]
+  },
+  "${modID}:Sadism": {
+    "NAME": "Sadism",
+    "DESCRIPTIONS": [
+      "Whenever you play an #yAttack this turn, heal #b",
+      " HP."
+    ]
+  },
+  "${modID}:ToxicRecoil": {
+    "NAME": "Toxic Recoil",
+    "DESCRIPTIONS": [
+      "When attacked, apply #b",
+      " #yPoison back."
+    ]
+  }
+}

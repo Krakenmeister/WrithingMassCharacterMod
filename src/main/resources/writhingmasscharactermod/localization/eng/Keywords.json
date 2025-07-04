@@ -1,0 +1,59 @@
+[
+  {
+    "PROPER_NAME": "This is displayed in the tooltip.",
+    "NAMES": [
+      "these",
+      "are",
+      "detected",
+      "in",
+      "the",
+      "text"
+    ],
+    "DESCRIPTION": "This is displayed in the tooltip. Spaces should not be used be avoided in NAMES, with the exception of multi-word keywords (see next entry)."
+  },
+  {
+    "PROPER_NAME": "Multiword Keyword",
+    "NAMES": [
+      "multiword keyword",
+      "multiword_keyword",
+      "multiword_keywords"
+    ],
+    "DESCRIPTION": "Make sure the first element in NAMES has no underscores. The rest should use _ in the place of spaces. In card text, you'll use the underscore versions."
+  },
+  {
+    "PROPER_NAME": "Whip",
+    "NAMES": [
+      "whip",
+      "whips"
+    ],
+    "DESCRIPTION": "Whips are temporary #b0 cost self-damaging Attack cards."
+  },
+  {
+    "PROPER_NAME": "Bleed",
+    "NAMES": [
+      "bleed"
+    ],
+    "DESCRIPTION": "Creatures with Bleed lose additional HP whenever they lose HP. Each turn, Bleed is reduced by #b1."
+  },
+  {
+    "PROPER_NAME": "Resilience",
+    "NAMES": [
+      "resilience"
+    ],
+    "DESCRIPTION": "Increases block scaling from #yMalleable."
+  },
+  {
+    "PROPER_NAME": "Soul Bond",
+    "NAMES": [
+      "soulbond"
+    ],
+    "DESCRIPTION": "Whenever you lose HP, enemy loses equal HP."
+  },
+  {
+    "PROPER_NAME": "Vitality",
+    "NAMES": [
+      "vitality"
+    ],
+    "DESCRIPTION": "Improves HP gain from healing."
+  }
+]

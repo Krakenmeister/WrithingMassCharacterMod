@@ -1,0 +1,14 @@
+{
+  "${modID}:Low": {
+    "NAME": "Moribund",
+    "DESCRIPTION": ["Your Attacks deal double damage."]
+  },
+  "${modID}:Mid": {
+    "NAME": "Froth",
+    "DESCRIPTION": ["At the start of your turn, draw 1 additional card."]
+  },
+  "${modID}:High": {
+    "NAME": "Molt",
+    "DESCRIPTION": ["At the end of your turn, gain 3 #yBlock."]
+  }
+}

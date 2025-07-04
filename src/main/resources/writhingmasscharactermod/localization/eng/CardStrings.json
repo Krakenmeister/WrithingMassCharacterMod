@@ -1,0 +1,77 @@
+{
+  "${modID}:ExampleCard": {
+    "NAME": "Name",
+    "DESCRIPTION": "Description. NL Second line.",
+    "UPGRADE_DESCRIPTION": "This will automatically be used if the card is upgraded. Remove it if unneeded.",
+    "EXTENDED_DESCRIPTION": [
+      "You can put more text in here.",
+      "If you need to use it for stuff.",
+      "Blizzard is a good example for this."
+    ]
+  },
+  "${modID}:Strike": {
+    "NAME": "Strike",
+    "DESCRIPTION": "Deal !D! damage."
+  },
+  "${modID}:Defend": {
+    "NAME": "Defend",
+    "DESCRIPTION": "Gain !B! Block."
+  },
+  "${modID}:Whip": {
+    "NAME": "Whip",
+    "DESCRIPTION": "Ethereal. NL Take !M! damage. NL Deal !D! damage. NL Exhaust."
+  },
+  "${modID}:Flagella": {
+    "NAME": "Flagella",
+    "DESCRIPTION": "Add !M! *Whips into your hand."
+  },
+  "${modID}:Spank": {
+    "NAME": "Spank",
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! ${modID}:Bleed."
+  },
+  "${modID}:ReactiveStrike": {
+    "NAME": "Reactive Strike",
+    "DESCRIPTION": "Retain. NL Deal !D! damage. NL Damage value rerolled from 5 to 15 when you take damage."
+  },
+  "${modID}:Dynamic": {
+    "NAME": "Dynamic",
+    "DESCRIPTION": "Whenever you lose HP, enemy loses equal HP. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Whenever you lose HP, enemy loses equal HP."
+  },
+  "${modID}:Bloodbath": {
+    "NAME": "Bloodbath",
+    "DESCRIPTION": "Gain !${modID}:selfvulnerable! Vulnerable. NL Apply !M! ${modID}:Bleed to ALL enemies."
+  },
+  "${modID}:Debauchery": {
+    "NAME": "Debauchery",
+    "DESCRIPTION": "Take !M! damage. NL Deal !D! damage to ALL enemies."
+  },
+  "${modID}:FinalForm": {
+    "NAME": "Final Form",
+    "DESCRIPTION": "Set HP to 1. NL Gain !${modID:finalformintangible} Intangible. NL Gain !M! Buffer."
+  },
+  "${modID}:Husk": {
+    "NAME": "Husk",
+    "DESCRIPTION": "Double the enemy's Bleed. NL Exhaust."
+  },
+  "${modID}:Sadism": {
+    "NAME": "Sadism",
+    "DESCRIPTION": "Whenever you play an Attack this turn, heal !M! HP."
+  },
+  "${modID}:Infestation": {
+    "NAME": "Infestation",
+    "DESCRIPTION": "Apply !M! Poison. NL Add a copy of this card into your discard pile."
+  },
+  "${modID}:Bloom": {
+    "NAME": "Bloom",
+    "DESCRIPTION": "Take !D! damage. NL Gain !M! Regen"
+  },
+  "${modID}:MassDestruction": {
+    "NAME": "Mass Destruction",
+    "DESCRIPTION": "Ethereal. NL Deal !D! damage, equal to current HP. NL Exhaust."
+  },
+  "${modID}:ToxicRecoil": {
+    "NAME": "Toxic Recoil",
+    "DESCRIPTION": "Whenever you are attacked, apply !M! Poison back."
+  }
+}
