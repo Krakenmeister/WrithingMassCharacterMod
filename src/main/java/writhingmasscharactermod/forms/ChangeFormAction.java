@@ -6,7 +6,6 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-import com.megacrit.cardcrawl.stances.AbstractStance;
 import writhingmasscharactermod.patches.FormFieldPatch;
 import writhingmasscharactermod.util.FormUtils;
 
@@ -26,7 +25,6 @@ public class ChangeFormAction extends AbstractGameAction {
     }
 
     public void update() {
-        System.out.println("got here 0");
         if (this.duration == Settings.ACTION_DUR_FAST) {
             if (AbstractDungeon.player.hasPower("CannotChangeStancePower")) {
                 this.isDone = true;
@@ -50,8 +48,6 @@ public class ChangeFormAction extends AbstractGameAction {
                 oldForm.onExitForm();
                 FormFieldPatch.form.set(AbstractDungeon.player, newForm);
                 newForm.onEnterForm();
-                System.out.println("got here");
-                System.out.println(this.id);
 //                if (AbstractDungeon.actionManager.uniqueFormsThisCombat.containsKey(newForm.ID)) {
 //                    int currentCount = (Integer)AbstractDungeon.actionManager.uniqueFormsThisCombat.get(newForm.ID);
 //                    AbstractDungeon.actionManager.uniqueFormsThisCombat.put(newForm.ID, currentCount + 1);

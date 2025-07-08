@@ -17,22 +17,20 @@ public class MalignantTumor extends BaseRelic {
     public static final String ID = makeID(NAME);
     private static final RelicTier RARITY = RelicTier.STARTER;
     private static final LandingSound SOUND = LandingSound.HEAVY;
-    private static final int STARTING_MALLEABLE = 1;
-    private static final int STARTING_RESILIENCE = 1;
+    private static final int STARTING_MALLEABLE = 3;
 
     public MalignantTumor() {
         super(ID, NAME, WrithingMassCharacter.Meta.CARD_COLOR, RARITY, SOUND);
     }
 
     public String getUpdatedDescription() {
-        return DESCRIPTIONS[0] + STARTING_MALLEABLE + DESCRIPTIONS[1] + STARTING_RESILIENCE + DESCRIPTIONS[2];
+        return DESCRIPTIONS[0] + STARTING_MALLEABLE + DESCRIPTIONS[1];
     }
 
     public void atBattleStart() {
         this.flash();
         this.addToBot(new RelicAboveCreatureAction(AbstractDungeon.player, this));
         this.addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new MalleablePower(AbstractDungeon.player, 1), 1));
-        this.addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new ResiliencePower(AbstractDungeon.player, 1), 1));
         this.grayscale = true;
     }
 

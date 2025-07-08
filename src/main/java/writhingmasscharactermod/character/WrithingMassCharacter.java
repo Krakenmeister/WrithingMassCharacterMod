@@ -30,6 +30,7 @@ import writhingmasscharactermod.forms.ChangeFormAction;
 import writhingmasscharactermod.forms.HighForm;
 import writhingmasscharactermod.forms.LowForm;
 import writhingmasscharactermod.forms.MidForm;
+import writhingmasscharactermod.powers.EndlessHungerPower;
 import writhingmasscharactermod.relics.starter.MalignantTumor;
 
 import java.util.ArrayList;
@@ -320,6 +321,13 @@ public class WrithingMassCharacter extends CustomPlayer {
     }
 
     @Override
+    public void applyStartOfCombatLogic() {
+        super.applyStartOfCombatLogic();
+
+        this.addPower(new EndlessHungerPower(this, 1, 3));
+    }
+
+    @Override
     public void healthBarUpdatedEvent() {
         super.healthBarUpdatedEvent();
 
@@ -339,13 +347,10 @@ public class WrithingMassCharacter extends CustomPlayer {
 
             if ((float)currentHealth / (float)maxHealth < 0.3333F) {
                 AbstractDungeon.actionManager.addToBottom(new ChangeFormAction(new LowForm()));
-                System.out.println("low health");
             } else if ((float)currentHealth / (float)maxHealth < 0.6666667F) {
                 AbstractDungeon.actionManager.addToBottom(new ChangeFormAction(new MidForm()));
-                System.out.println("mid health");
             } else {
                 AbstractDungeon.actionManager.addToBottom(new ChangeFormAction(new HighForm()));
-                System.out.println("high health");
             }
         } catch (Exception e) {
 

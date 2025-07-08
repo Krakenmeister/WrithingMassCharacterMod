@@ -47,5 +47,13 @@
       "When attacked, apply #b",
       " #yPoison back."
     ]
+  },
+  "${modID}:EndlessHunger": {
+    "NAME": "Endless Hunger",
+    "DESCRIPTIONS": [
+      "At the end of your turn, lose #b",
+      " Max HP. Gain #b",
+      " Max HP when a non-Minion enemy dies."
+    ]
   }
 }
