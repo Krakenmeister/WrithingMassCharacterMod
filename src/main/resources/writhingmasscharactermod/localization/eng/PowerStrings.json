@@ -55,5 +55,12 @@
       " Max HP. Gain #b",
       " Max HP when a non-Minion enemy dies."
     ]
+  },
+  "${modID}:Laceration": {
+    "NAME": "Laceration",
+    "DESCRIPTIONS": [
+      "Whenever you deal unblocked attack damage, apply #b",
+      " #yBleed."
+    ]
   }
 }

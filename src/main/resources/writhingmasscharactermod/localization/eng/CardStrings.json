@@ -82,5 +82,9 @@
   "${modID}:FleshyAbundance": {
     "NAME": "Fleshy Abundance",
     "DESCRIPTION": "Heal !M! HP X times."
+  },
+  "${modID}:Laceration": {
+    "NAME": "Laceration",
+    "DESCRIPTION": "Whenever an Attack deals unblocked damage, apply !M! ${modID}:Bleed."
   }
 }
