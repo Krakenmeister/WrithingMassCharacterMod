@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import writhingmasscharactermod.patches.FormFieldPatch;
+import writhingmasscharactermod.util.FormChangeTrigger;
 import writhingmasscharactermod.util.FormUtils;
 
 public class ChangeFormAction extends AbstractGameAction {
@@ -58,7 +59,9 @@ public class ChangeFormAction extends AbstractGameAction {
                 FormUtils.playerSwitchedForm(AbstractDungeon.player);
 
                 for(AbstractCard c : AbstractDungeon.player.discardPile.group) {
-                    FormUtils.triggerExhaustedCardsOnFormChange(c, newForm);
+                    if (c instanceof FormChangeTrigger) {
+                        ((FormChangeTrigger) c).triggerExhaustedCardsOnFormChange(newForm);
+                    }
                 }
 
                 FormUtils.onFormChange(AbstractDungeon.player, newForm);

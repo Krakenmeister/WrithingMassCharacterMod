@@ -52,7 +52,7 @@
   },
   "${modID}:Husk": {
     "NAME": "Husk",
-    "DESCRIPTION": "Double the enemy's Bleed. NL Exhaust."
+    "DESCRIPTION": "Double the enemy's ${modID}:Bleed. NL Exhaust."
   },
   "${modID}:Sadism": {
     "NAME": "Sadism",
@@ -86,5 +86,9 @@
   "${modID}:Laceration": {
     "NAME": "Laceration",
     "DESCRIPTION": "Whenever an Attack deals unblocked damage, apply !M! ${modID}:Bleed."
+  },
+  "${modID}:Polymorphism": {
+    "NAME": "Polymorphism",
+    "DESCRIPTION": "Deal !D! damage. NL Whenever you change ${modID}:Forms, return this from the discard pile to your hand."
   }
 }

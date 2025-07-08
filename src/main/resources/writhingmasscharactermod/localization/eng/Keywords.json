@@ -55,5 +55,13 @@
       "vitality"
     ],
     "DESCRIPTION": "Improves HP gain from healing."
+  },
+  {
+    "PROPER_NAME": "Form",
+    "NAMES": [
+      "form",
+      "forms"
+    ],
+    "DESCRIPTION": "A player state determined by current health as a percentage of Max HP."
   }
 ]
