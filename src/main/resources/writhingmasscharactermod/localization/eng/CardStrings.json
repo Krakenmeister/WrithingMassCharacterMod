@@ -78,5 +78,9 @@
     "NAME": "Osmosis",
     "DESCRIPTION": "Convert your current Block to StSLib:Temporary_HP.",
     "UPGRADE_DESCRIPTION": "Gain !M! Block. NL Convert your current Block to StSLib:Temporary_HP."
+  },
+  "${modID}:FleshyAbundance": {
+    "NAME": "Fleshy Abundance",
+    "DESCRIPTION": "Heal !M! HP X times."
   }
 }
