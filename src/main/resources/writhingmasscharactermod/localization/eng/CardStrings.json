@@ -73,5 +73,10 @@
   "${modID}:ToxicRecoil": {
     "NAME": "Toxic Recoil",
     "DESCRIPTION": "Whenever you are attacked, apply !M! Poison back."
+  },
+  "${modID}:Osmosis": {
+    "NAME": "Osmosis",
+    "DESCRIPTION": "Convert your current Block to StSLib:Temporary_HP.",
+    "UPGRADE_DESCRIPTION": "Gain !M! Block. NL Convert your current Block to StSLib:Temporary_HP."
   }
 }

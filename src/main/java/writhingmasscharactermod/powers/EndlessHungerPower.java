@@ -29,17 +29,6 @@ public class EndlessHungerPower extends BasePower implements OnEnemyDeathPower {
         AbstractDungeon.player.decreaseMaxHealth(amount2);
     }
 
-    public void onDeath() {
-        System.out.println("on death");
-        System.out.println(AbstractDungeon.getMonsters().areMonstersBasicallyDead());
-        System.out.println(this.owner.currentHealth);
-        System.out.println(this.owner.hasPower("Minion"));
-        if (!AbstractDungeon.getMonsters().areMonstersBasicallyDead() && this.owner.currentHealth <= 0 && !this.owner.hasPower("Minion")) {
-            AbstractDungeon.player.increaseMaxHp(amount, true);
-        }
-    }
-
-
     @Override
     public void onEnemyDeath(AbstractMonster m) {
         AbstractDungeon.player.increaseMaxHp(amount, true);
