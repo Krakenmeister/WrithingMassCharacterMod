@@ -48,7 +48,7 @@
   },
   "${modID}:FinalForm": {
     "NAME": "Final Form",
-    "DESCRIPTION": "Set HP to 1. NL Gain !${modID:finalformintangible} Intangible. NL Gain !M! Buffer."
+    "DESCRIPTION": "Set HP to 1. NL Gain !${modID}:finalformintangible! Intangible. NL Gain !M! Buffer."
   },
   "${modID}:Husk": {
     "NAME": "Husk",
@@ -64,7 +64,7 @@
   },
   "${modID}:Bloom": {
     "NAME": "Bloom",
-    "DESCRIPTION": "Take !D! damage. NL Gain !M! Regen"
+    "DESCRIPTION": "Take !M! damage. NL Gain !${modID}:bloomregen! Regen"
   },
   "${modID}:MassDestruction": {
     "NAME": "Mass Destruction",
@@ -94,5 +94,9 @@
   "${modID}:Aftercare": {
     "NAME": "Aftercare",
     "DESCRIPTION": "Heal !M! HP. NL Draw 1 card."
+  },
+  "${modID}:Ravage": {
+    "NAME": "Ravage",
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! Vulnerable."
   }
 }
