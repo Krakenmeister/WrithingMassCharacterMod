@@ -90,5 +90,9 @@
   "${modID}:Polymorphism": {
     "NAME": "Polymorphism",
     "DESCRIPTION": "Deal !D! damage. NL Whenever you change ${modID}:Forms, return this from the discard pile to your hand."
+  },
+  "${modID}:Aftercare": {
+    "NAME": "Aftercare",
+    "DESCRIPTION": "Heal !M! HP. NL Draw 1 card."
   }
 }
