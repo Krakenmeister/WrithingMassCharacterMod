@@ -102,5 +102,9 @@
   "${modID}:BarbedLeash": {
     "NAME": "Barbed Leash",
     "DESCRIPTION": "Apply !M! Thorns. NL Deal !D! damage."
+  },
+  "${modID}:TenTickles": {
+    "NAME": "Ten Tickles",
+    "DESCRIPTION": "Add *Whips into your hand until it is full."
   }
 }
