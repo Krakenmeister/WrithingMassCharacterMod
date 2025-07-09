@@ -123,5 +123,9 @@
   "${modID}:Asphyxiation": {
     "NAME": "Asphyxiation",
     "DESCRIPTION": "Gain !B! Block. NL Gain !M! ${modID}:Constricted."
+  },
+  "${modID}:Scarhide": {
+    "NAME": "Scarhide",
+    "DESCRIPTION": "Gain !B! Block, equal to missing HP."
   }
 }
