@@ -63,5 +63,12 @@
       "forms"
     ],
     "DESCRIPTION": "A player state determined by current health as a percentage of Max HP."
+  },
+  {
+    "PROPER_NAME": "Constricted",
+    "NAMES": [
+      "constricted"
+    ],
+    "DESCRIPTION": "Deals damage at end of turn."
   }
 ]

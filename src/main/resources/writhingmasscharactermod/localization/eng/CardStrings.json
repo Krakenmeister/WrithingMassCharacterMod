@@ -119,5 +119,9 @@
     "NAME": "Unceasing Bottom",
     "DESCRIPTION": "Deal !D! damage. NL Add a copy of a card from your discard pile into your hand. NL Exhaust.",
     "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Add a copy of a card from your discard pile into your hand."
+  },
+  "${modID}:Asphyxiation": {
+    "NAME": "Asphyxiation",
+    "DESCRIPTION": "Gain !B! Block. NL Gain !M! ${modID}:Constricted."
   }
 }
