@@ -17,12 +17,13 @@ public class WrithingMassOrb extends CustomEnergyOrb {
     private static final Texture cover = ImageMaster.loadImage(characterPath("energyorb/cover.png"));
     private static final Texture[] layers = new Texture[5];
 
+    private static final float eyeSpeed = 0.25f;
+
     private Vector2f eyeOffset = new Vector2f(0f, 0f);
     private Vector2f destinationOffset = new Vector2f(0f, 0f);
     private Vector2f originOffset = null;
     private float timeUntilNewDestination = 0f;
     private float t = 0f;
-    private float eyeSpeed = 0.5f;
 
     public WrithingMassOrb() {
         super(null, null, null);
@@ -47,7 +48,7 @@ public class WrithingMassOrb extends CustomEnergyOrb {
             } else if (t >= 1f) {
                 eyeOffset = new Vector2f(destinationOffset);
                 originOffset = null;
-                timeUntilNewDestination = (float)Math.random() * 5f + 1f;
+                timeUntilNewDestination = (float)Math.random() * 1.25f + 0.5f;
             } else {
                 t += deltaT * eyeSpeed * (energyCount + 0.25f);
                 eyeOffset = new Vector2f(
