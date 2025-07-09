@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
-public class RoleplayAction extends AbstractGameAction {
+public class ClimaxAction extends AbstractGameAction {
     private boolean freeToPlayOnce = false;
     private AbstractCreature source;
     private AbstractCreature target;
@@ -16,7 +16,7 @@ public class RoleplayAction extends AbstractGameAction {
     private DamageInfo attackDamage;
     private int energyOnUse = -1;
 
-    public RoleplayAction(AbstractCreature source, AbstractCreature target, DamageInfo selfDamage, DamageInfo attackDamage, int amount, boolean freeToPlayOnce, int energyOnUse) {
+    public ClimaxAction(AbstractCreature source, AbstractCreature target, DamageInfo selfDamage, DamageInfo attackDamage, int amount, boolean freeToPlayOnce, int energyOnUse) {
         this.source = source;
         this.target = target;
         this.selfDamage = selfDamage;

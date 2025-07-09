@@ -1,20 +1,20 @@
-package writhingmasscharactermod.cards.uncommon;
+package writhingmasscharactermod.cards.rare;
 
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import writhingmasscharactermod.actions.RoleplayAction;
+import writhingmasscharactermod.actions.ClimaxAction;
 import writhingmasscharactermod.cards.BaseCard;
 import writhingmasscharactermod.character.WrithingMassCharacter;
 import writhingmasscharactermod.util.CardStats;
 
-public class Roleplay extends BaseCard {
-    public static final String ID = makeID("Roleplay");
+public class Climax extends BaseCard {
+    public static final String ID = makeID("Climax");
     private static final CardStats info = new CardStats(
             WrithingMassCharacter.Meta.CARD_COLOR,
             CardType.ATTACK,
-            AbstractCard.CardRarity.UNCOMMON,
+            CardRarity.RARE,
             CardTarget.SELF_AND_ENEMY,
             -1
     );
@@ -25,12 +25,12 @@ public class Roleplay extends BaseCard {
     private static final int MULTIPLIER = 3;
     private static final int UPG_MULTIPLIER = 1;
 
-    public Roleplay() {
+    public Climax() {
         super(ID, info);
 
         setDamage(DAMAGE);
         setMagic(MAGIC_NUMBER);
-        setCustomVar("roleplaymultiplier", MULTIPLIER, UPG_MULTIPLIER);
+        setCustomVar("climaxmultiplier", MULTIPLIER, UPG_MULTIPLIER);
 
         setExhaust(true);
     }
@@ -39,7 +39,7 @@ public class Roleplay extends BaseCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         DamageInfo selfDamage = new DamageInfo(p, magicNumber, damageTypeForTurn);
         DamageInfo attackDamage = new DamageInfo(m, damage, damageTypeForTurn);
-        addToBot(new RoleplayAction(p, m, selfDamage, attackDamage, customVar("roleplaymultiplier"), freeToPlayOnce, energyOnUse));
+        addToBot(new ClimaxAction(p, m, selfDamage, attackDamage, customVar("climaxmultiplier"), freeToPlayOnce, energyOnUse));
     }
 
     /*@Override

@@ -111,8 +111,8 @@
     "NAME": "Joke's On You",
     "DESCRIPTION": "Whenever you take unblocked damage until next turn, heal !M! HP."
   },
-  "${modID}:Roleplay": {
-    "NAME": "Roleplay",
-    "DESCRIPTION": "Deal !D! damage !${modID}:roleplaymultiplier!X times. NL Exhaust."
+  "${modID}:Climax": {
+    "NAME": "Climax",
+    "DESCRIPTION": "Deal !D! damage !${modID}:climaxmultiplier!X times. NL Exhaust."
   }
 }
