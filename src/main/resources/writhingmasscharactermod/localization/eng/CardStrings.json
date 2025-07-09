@@ -98,5 +98,9 @@
   "${modID}:Ravage": {
     "NAME": "Ravage",
     "DESCRIPTION": "Deal !D! damage. NL Apply !M! Vulnerable."
+  },
+  "${modID}:BarbedLeash": {
+    "NAME": "Barbed Leash",
+    "DESCRIPTION": "Apply !M! Thorns. NL Deal !D! damage."
   }
 }
