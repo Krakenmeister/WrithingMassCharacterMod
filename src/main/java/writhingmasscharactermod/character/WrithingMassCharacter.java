@@ -32,6 +32,7 @@ import writhingmasscharactermod.forms.LowForm;
 import writhingmasscharactermod.forms.MidForm;
 import writhingmasscharactermod.powers.EndlessHungerPower;
 import writhingmasscharactermod.relics.starter.MalignantTumor;
+import writhingmasscharactermod.util.WrithingMassOrb;
 
 import java.util.ArrayList;
 
@@ -60,9 +61,9 @@ public class WrithingMassCharacter extends CustomPlayer {
         //Library color is basically the same as card color, but you need both because that's how the game was made.
         @SpireEnum
         public static PlayerClass WRITHING_MASS_CHARACTER;
-        @SpireEnum(name = "CHARACTER_GRAY_COLOR") // These two MUST match. Change it to something unique for your character.
+        @SpireEnum(name = "CHARACTER_WRITHING_COLOR") // These two MUST match. Change it to something unique for your character.
         public static AbstractCard.CardColor CARD_COLOR;
-        @SpireEnum(name = "CHARACTER_GRAY_COLOR") @SuppressWarnings("unused")
+        @SpireEnum(name = "CHARACTER_WRITHING_COLOR") @SuppressWarnings("unused")
         public static CardLibrary.LibraryType LIBRARY_COLOR;
 
         //Character select images
@@ -102,29 +103,6 @@ public class WrithingMassCharacter extends CustomPlayer {
     private static final String SHOULDER_2 = characterPath("shoulder2.png");
     private static final String CORPSE = characterPath("corpse.png"); //Corpse is when you die.
 
-    //Textures used for the energy orb
-    private static final String[] orbTextures = {
-            characterPath("energyorb/layer1.png"), //When you have energy
-            characterPath("energyorb/layer2.png"),
-            characterPath("energyorb/layer3.png"),
-            characterPath("energyorb/layer4.png"),
-            characterPath("energyorb/layer5.png"),
-            characterPath("energyorb/cover.png"), //"container"
-            characterPath("energyorb/layer1d.png"), //When you don't have energy
-            characterPath("energyorb/layer2d.png"),
-            characterPath("energyorb/layer3d.png"),
-            characterPath("energyorb/layer4d.png"),
-            characterPath("energyorb/layer5d.png")
-    };
-
-    //Speeds at which each layer of the energy orb texture rotates. Negative is backwards.
-    private static final float[] layerSpeeds = new float[] {
-            -20.0F,
-            20.0F,
-            -40.0F,
-            40.0F,
-            360.0F
-    };
 
     private void setCharacterScale() {
         float scale = maxHealth / 40F;
@@ -142,7 +120,7 @@ public class WrithingMassCharacter extends CustomPlayer {
 
     public WrithingMassCharacter() {
         super(getNames()[0], Meta.WRITHING_MASS_CHARACTER,
-                new CustomEnergyOrb(orbTextures, characterPath("energyorb/vfx.png"), layerSpeeds), //Energy Orb
+                new WrithingMassOrb(),
                 new SpineAnimation(WRITHING_MASS_SKELETON_ATLAS, WRITHING_MASS_SKELETON_JSON, 1.0F)); //Animation
 
         initializeClass(null,

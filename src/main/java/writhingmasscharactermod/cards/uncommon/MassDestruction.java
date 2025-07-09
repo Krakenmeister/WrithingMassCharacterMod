@@ -35,7 +35,6 @@ public class MassDestruction extends BaseCard {
             setDamage(WrithingMassCharacter.MAX_HP);
         }
 
-        setExhaust(true);
         setEthereal(true);
         setCostUpgrade(2);
     }

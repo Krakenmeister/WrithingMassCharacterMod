@@ -68,7 +68,7 @@
   },
   "${modID}:MassDestruction": {
     "NAME": "Mass Destruction",
-    "DESCRIPTION": "Ethereal. NL Deal !D! damage, equal to current HP. NL Exhaust."
+    "DESCRIPTION": "Ethereal. NL Deal !D! damage, equal to current HP."
   },
   "${modID}:ToxicRecoil": {
     "NAME": "Toxic Recoil",
