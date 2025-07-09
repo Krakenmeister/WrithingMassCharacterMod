@@ -50,7 +50,7 @@ public class WrithingMassOrb extends CustomEnergyOrb {
                 originOffset = null;
                 timeUntilNewDestination = (float)Math.random() * 1.25f + 0.25f;
             } else {
-                t += deltaT * eyeSpeed * (energyCount + 0.25f);
+                t += deltaT * eyeSpeed * (energyCount + 1f);
                 eyeOffset = new Vector2f(
                         originOffset.x + (t * (destinationOffset.x - originOffset.x)),
                         originOffset.y + (t * (destinationOffset.y - originOffset.y))
