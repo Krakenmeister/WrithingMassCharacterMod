@@ -70,5 +70,14 @@
       "constricted"
     ],
     "DESCRIPTION": "Deals damage at end of turn."
+  },
+  {
+    "PROPER_NAME": "Molt Form",
+    "NAMES": [
+      "moltform",
+      "molt form",
+      "molt_form"
+    ],
+    "DESCRIPTION": "Current HP at least 2/3 of Max HP."
   }
 ]

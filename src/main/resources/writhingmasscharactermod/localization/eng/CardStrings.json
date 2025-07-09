@@ -127,5 +127,9 @@
   "${modID}:Scarhide": {
     "NAME": "Scarhide",
     "DESCRIPTION": "Gain !B! Block, equal to missing HP."
+  },
+  "${modID}:Bloat": {
+    "NAME": "Bloat",
+    "DESCRIPTION": "Gain !B! Block. If in ${modID}:Molt_Form, gain !B! Block again."
   }
 }
