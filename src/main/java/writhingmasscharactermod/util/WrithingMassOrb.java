@@ -17,7 +17,7 @@ public class WrithingMassOrb extends CustomEnergyOrb {
     private static final Texture cover = ImageMaster.loadImage(characterPath("energyorb/cover.png"));
     private static final Texture[] layers = new Texture[5];
 
-    private static final float eyeSpeed = 0.25f;
+    private static final float eyeSpeed = 0.1f;
 
     private Vector2f eyeOffset = new Vector2f(0f, 0f);
     private Vector2f destinationOffset = new Vector2f(0f, 0f);
