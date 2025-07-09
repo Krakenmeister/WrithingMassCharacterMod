@@ -15,7 +15,7 @@ public class Climax extends BaseCard {
             WrithingMassCharacter.Meta.CARD_COLOR,
             CardType.ATTACK,
             CardRarity.RARE,
-            CardTarget.SELF_AND_ENEMY,
+            CardTarget.ENEMY,
             -1
     );
 

@@ -114,5 +114,10 @@
   "${modID}:Climax": {
     "NAME": "Climax",
     "DESCRIPTION": "Deal !D! damage !${modID}:climaxmultiplier!X times. NL Exhaust."
+  },
+  "${modID}:UnceasingBottom": {
+    "NAME": "Unceasing Bottom",
+    "DESCRIPTION": "Deal !D! damage. NL Add a copy of a card from your discard pile into your hand. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Add a copy of a card from your discard pile into your hand."
   }
 }

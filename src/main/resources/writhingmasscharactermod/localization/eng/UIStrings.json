@@ -12,5 +12,10 @@
       "This": "Contains pairs of Strings, used to get values based on keys.",
       "This is a key": "This is a value."
     }
+  },
+  "CopyDiscardToHandAction": {
+    "TEXT": [
+      "Choose a Card to Copy into Your Hand."
+    ]
   }
 }
