@@ -62,5 +62,12 @@
       "Whenever you deal unblocked attack damage, apply #b",
       " #yBleed."
     ]
+  },
+  "${modID}:JokesOnYou": {
+    "NAME": "Joke's On You",
+    "DESCRIPTIONS": [
+      "Whenever you take unblocked damage until next turn, heal #b",
+      " HP."
+    ]
   }
 }

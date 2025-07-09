@@ -106,5 +106,9 @@
   "${modID}:TenTickles": {
     "NAME": "Ten Tickles",
     "DESCRIPTION": "Add *Whips into your hand until it is full."
+  },
+  "${modID}:JokesOnYou": {
+    "NAME": "Joke's On You",
+    "DESCRIPTION": "Whenever you take unblocked damage until next turn, heal !M! HP."
   }
 }
