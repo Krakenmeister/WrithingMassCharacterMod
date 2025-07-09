@@ -17,7 +17,7 @@ public class Bloodbath extends BaseCard {
             WrithingMassCharacter.Meta.CARD_COLOR,
             AbstractCard.CardType.SKILL,
             AbstractCard.CardRarity.COMMON,
-            CardTarget.ALL_ENEMY,
+            CardTarget.ALL,
             0
     );
 

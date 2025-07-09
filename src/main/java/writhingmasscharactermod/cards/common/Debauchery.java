@@ -21,7 +21,7 @@ public class Debauchery extends BaseCard {
             WrithingMassCharacter.Meta.CARD_COLOR,
             CardType.ATTACK,
             CardRarity.COMMON,
-            CardTarget.ALL_ENEMY,
+            CardTarget.ALL,
             1
     );
 
