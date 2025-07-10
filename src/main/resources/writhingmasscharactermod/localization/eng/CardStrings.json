@@ -147,5 +147,10 @@
   "${modID}:Nibble": {
     "NAME": "Nibble",
     "DESCRIPTION": "Take !M! damage. NL Raise your Max HP by !${modID}:nibblegain!. NL Exhaust."
+  },
+  "${modID}:Mitosis": {
+    "NAME": "Mitosis",
+    "DESCRIPTION": "Double your current permanent HP.",
+    "UPGRADE_DESCRIPTION": "Double ALL of your current HP."
   }
 }
