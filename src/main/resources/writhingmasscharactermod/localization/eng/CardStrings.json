@@ -171,5 +171,9 @@
   "${modID}:Needle": {
     "NAME": "Needle",
     "DESCRIPTION": "Deal !D! damage. NL Apply !M! ${modID}:Bleed."
+  },
+  "${modID}:Exhibitionist": {
+    "NAME": "Exhibitionist",
+    "DESCRIPTION": "Lose ALL Block. NL Remove ALL Block from the enemy."
   }
 }
