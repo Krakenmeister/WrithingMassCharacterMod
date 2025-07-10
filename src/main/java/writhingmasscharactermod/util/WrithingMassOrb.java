@@ -11,6 +11,7 @@ import org.lwjgl.util.vector.Vector2f;
 import static writhingmasscharactermod.WrithingMassCharacterMod.characterPath;
 
 public class WrithingMassOrb extends CustomEnergyOrb {
+    private static final String vfxPath = characterPath("energyorb/vfx.png");
     private static final String emptyVfxPath = characterPath("energyorb/emptyVfx.png");
     private static final float ORB_IMG_SCALE;
 
@@ -28,7 +29,7 @@ public class WrithingMassOrb extends CustomEnergyOrb {
     public WrithingMassOrb() {
         super(null, null, null);
 
-        orbVfx = ImageMaster.loadImage(emptyVfxPath);
+        orbVfx = ImageMaster.loadImage(vfxPath);
 
         layers[0] = ImageMaster.loadImage(characterPath("energyorb/layer0.png"));
         layers[1] = ImageMaster.loadImage(characterPath("energyorb/layer1.png"));

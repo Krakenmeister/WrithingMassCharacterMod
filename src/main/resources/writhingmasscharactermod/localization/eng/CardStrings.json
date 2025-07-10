@@ -156,5 +156,10 @@
   "${modID}:Edgelord": {
     "NAME": "Edgelord",
     "DESCRIPTION": "If in ${modID}:Moribund_Form, raise your Max HP by !M!. NL Exhaust."
+  },
+  "${modID}:Bloodrush": {
+    "NAME": "Bloodrush",
+    "DESCRIPTION": "Take !M! damage. NL Gain [E] [E]",
+    "UPGRADE_DESCRIPTION": "Take !M! damage. NL Gain [E] [E] [E]"
   }
 }
