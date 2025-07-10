@@ -175,5 +175,9 @@
   "${modID}:Exhibitionist": {
     "NAME": "Exhibitionist",
     "DESCRIPTION": "Lose ALL Block. NL Remove ALL Block from the enemy."
+  },
+  "${modID}:Gobble": {
+    "NAME": "Gobble",
+    "DESCRIPTION": "Deal !D! damage. Gain ${modID}:Temporary_HP equal to unblocked damage dealt."
   }
 }
