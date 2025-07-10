@@ -76,5 +76,12 @@
       "Whenever you enter #yFroth #yForm, draw #b",
       " card."
     ]
+  },
+  "${modID}:Proboscis": {
+    "NAME": "Siphon",
+    "DESCRIPTIONS": [
+      "Upon losing HP, you heal #b",
+      " HP."
+    ]
   }
 }

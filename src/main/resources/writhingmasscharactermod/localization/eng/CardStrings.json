@@ -68,7 +68,8 @@
   },
   "${modID}:MassDestruction": {
     "NAME": "Mass Destruction",
-    "DESCRIPTION": "Ethereal. NL Deal !D! damage, equal to ALL current HP."
+    "DESCRIPTION": "Ethereal. NL Deal damage equal to your HP.",
+    "UPGRADE_DESCRIPTION": " NL (Deals !D! damage.)"
   },
   "${modID}:ToxicRecoil": {
     "NAME": "Toxic Recoil",
@@ -126,7 +127,8 @@
   },
   "${modID}:Scarhide": {
     "NAME": "Scarhide",
-    "DESCRIPTION": "Gain !B! Block, equal to missing HP."
+    "DESCRIPTION": "Gain Block equal to missing HP.",
+    "UPGRADE_DESCRIPTION": " NL (Gains !B! Block.)"
   },
   "${modID}:Bloat": {
     "NAME": "Bloat",
@@ -161,5 +163,13 @@
     "NAME": "Bloodrush",
     "DESCRIPTION": "Take !M! damage. NL Gain [E] [E]",
     "UPGRADE_DESCRIPTION": "Take !M! damage. NL Gain [E] [E] [E]"
+  },
+  "${modID}:Proboscis": {
+    "NAME": "Proboscis",
+    "DESCRIPTION": "Deal !D! damage. NL Whenever this enemy loses HP, heal !M! HP. NL Exhaust."
+  },
+  "${modID}:Needle": {
+    "NAME": "Needle",
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! ${modID}:Bleed."
   }
 }
