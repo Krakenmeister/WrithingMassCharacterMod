@@ -26,6 +26,7 @@ public class Mitosis extends BaseCard {
         setExhaust(true);
     }
 
+
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         int currentHealth = p.currentHealth;
