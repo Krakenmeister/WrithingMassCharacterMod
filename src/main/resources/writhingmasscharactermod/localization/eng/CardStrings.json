@@ -178,6 +178,6 @@
   },
   "${modID}:Gobble": {
     "NAME": "Gobble",
-    "DESCRIPTION": "Deal !D! damage. Gain ${modID}:Temporary_HP equal to unblocked damage dealt."
+    "DESCRIPTION": "Deal !D! damage. NL Gain ${modID}:Temporary_HP equal to unblocked damage dealt."
   }
 }
