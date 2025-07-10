@@ -69,5 +69,12 @@
       "Whenever you take unblocked damage until next turn, heal #b",
       " HP."
     ]
+  },
+  "${modID}:Deluge": {
+    "NAME": "Deluge",
+    "DESCRIPTIONS": [
+      "Whenever you enter #yFroth #yForm, draw #b",
+      " card."
+    ]
   }
 }

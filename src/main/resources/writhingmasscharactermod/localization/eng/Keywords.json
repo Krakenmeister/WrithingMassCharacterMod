@@ -79,5 +79,22 @@
       "molt_form"
     ],
     "DESCRIPTION": "Current HP at least 2/3 of Max HP."
+  },
+  {
+    "PROPER_NAME": "Froth Form",
+    "NAMES": [
+      "frothform",
+      "froth form",
+      "froth_form"
+    ],
+    "DESCRIPTION": "Current HP between 1/3 and 2/3 of Max HP."
+  },
+  {
+    "PROPER_NAME": "Temporary HP",
+    "NAMES": [
+      "temporaryhp",
+      "temporary_hp"
+    ],
+    "DESCRIPTION": "HP that is not kept after the end of combat. Does not affect #yForm."
   }
 ]

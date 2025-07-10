@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import writhingmasscharactermod.cards.uncommon.MassDestruction;
+import writhingmasscharactermod.patches.realtemphp.RealTempHPField;
 
 import java.util.ArrayList;
 
@@ -30,7 +31,8 @@ public class MassDestructionPatch {
             for (CardGroup cardGroup : cardsInPlay) {
                 for (int j = 0; j < cardGroup.getCardDeck().size(); j++) {
                     if (cardGroup.group.get(j).cardID.equals(MassDestruction.ID)) {
-                        ((MassDestruction) (cardGroup.group.get(j))).externalSetDamage(((AbstractPlayer)__instance).currentHealth);
+                        int allHealth = ((AbstractPlayer)__instance).currentHealth + RealTempHPField.realTempHp.get(__instance);
+                        ((MassDestruction) (cardGroup.group.get(j))).externalSetDamage(allHealth);
                     }
                 }
             }

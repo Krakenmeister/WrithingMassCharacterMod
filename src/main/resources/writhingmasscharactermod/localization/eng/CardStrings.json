@@ -68,7 +68,7 @@
   },
   "${modID}:MassDestruction": {
     "NAME": "Mass Destruction",
-    "DESCRIPTION": "Ethereal. NL Deal !D! damage, equal to current HP."
+    "DESCRIPTION": "Ethereal. NL Deal !D! damage, equal to ALL current HP."
   },
   "${modID}:ToxicRecoil": {
     "NAME": "Toxic Recoil",
@@ -76,8 +76,8 @@
   },
   "${modID}:Osmosis": {
     "NAME": "Osmosis",
-    "DESCRIPTION": "Convert your current Block to StSLib:Temporary_HP.",
-    "UPGRADE_DESCRIPTION": "Gain !M! Block. NL Convert your current Block to StSLib:Temporary_HP."
+    "DESCRIPTION": "Convert your current Block to ${modID}:Temporary_HP.",
+    "UPGRADE_DESCRIPTION": "Gain !M! Block. NL Convert your current Block to ${modID}:Temporary_HP."
   },
   "${modID}:FleshyAbundance": {
     "NAME": "Fleshy Abundance",
@@ -131,5 +131,17 @@
   "${modID}:Bloat": {
     "NAME": "Bloat",
     "DESCRIPTION": "Gain !B! Block. If in ${modID}:Molt_Form, gain !B! Block again."
+  },
+  "${modID}:Deluge": {
+    "NAME": "Deluge",
+    "DESCRIPTION": "Whenever you enter ${modID}:Froth_Form, draw !M! card{@@}{!M!|1=|@=s}."
+  },
+  "${modID}:Gush": {
+    "NAME": "Gush",
+    "DESCRIPTION": "Take !M! damage. NL Draw !${modID}:gushdraw! card{@@}{!${modID}:gushdraw!|1=|@=s}."
+  },
+  "${modID}:Coalesce": {
+    "NAME": "Coalesce",
+    "DESCRIPTION": "Lose !M! HP. NL Gain !${modID}:coalescegain! ${modID}:Temporary_HP."
   }
 }
