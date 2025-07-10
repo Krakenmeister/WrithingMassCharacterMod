@@ -90,11 +90,20 @@
     "DESCRIPTION": "Current HP between 1/3 and 2/3 of Max HP."
   },
   {
+    "PROPER_NAME": "Moribund Form",
+    "NAMES": [
+      "moribundform",
+      "moribund form",
+      "moribund_form"
+    ],
+    "DESCRIPTION": "Current HP below 1/3 of Max HP."
+  },
+  {
     "PROPER_NAME": "Temporary HP",
     "NAMES": [
       "temporaryhp",
       "temporary_hp"
     ],
-    "DESCRIPTION": "HP that is not kept after the end of combat. Does not affect #yForm."
+    "DESCRIPTION": "HP that is not kept at the end of combat. Does not affect #yForm."
   }
 ]

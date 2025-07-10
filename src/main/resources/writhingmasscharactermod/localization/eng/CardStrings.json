@@ -152,5 +152,9 @@
     "NAME": "Mitosis",
     "DESCRIPTION": "Double your HP. NL Exhaust.",
     "UPGRADE_DESCRIPTION": "Double your HP. NL Double your Block. NL Exhaust."
+  },
+  "${modID}:Edgelord": {
+    "NAME": "Edgelord",
+    "DESCRIPTION": "If in ${modID}:Moribund_Form, raise your Max HP by !M!. NL Exhaust."
   }
 }
