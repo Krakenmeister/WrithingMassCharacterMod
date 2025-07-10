@@ -9,7 +9,7 @@ import writhingmasscharactermod.util.OnAnyHealthLossPower;
 
 import static writhingmasscharactermod.WrithingMassCharacterMod.makeID;
 
-public class JokesOnYouPower extends BasePower implements OnAnyHealthLossPower {
+public class JokesOnYouPower extends BasePower {
     public static final String POWER_ID = makeID("JokesOnYou");
     private static final AbstractPower.PowerType TYPE = AbstractPower.PowerType.BUFF;
     private static final boolean TURN_BASED = false;
@@ -32,7 +32,7 @@ public class JokesOnYouPower extends BasePower implements OnAnyHealthLossPower {
         addToBot(new RemoveSpecificPowerAction(owner, owner, JokesOnYouPower.POWER_ID));
     }
 
-    @Override
+    /*@Override
     public void onAnyHealthLoss(DamageInfo info, int damageAmount, boolean wasTempHpLost) {
         System.out.println(damageAmount);
         System.out.println(wasTempHpLost);
@@ -40,5 +40,37 @@ public class JokesOnYouPower extends BasePower implements OnAnyHealthLossPower {
             flash();
             addToBot(new HealAction(owner, owner, amount));
         }
+    }*/
+
+//    @Override
+//    public int onL(DamageInfo info, int damageAmount) {
+//        System.out.println("got here");
+//        System.out.println(damageAmount);
+//        super.wasHPLost(info, damageAmount);
+//
+//        if (damageAmount > 0) {
+//            flash();
+//            addToBot(new HealAction(owner, owner, amount));
+//        }
+//    }
+
+    @Override
+    public int onLoseHp(int damageAmount) {
+        System.out.println("got here");
+        System.out.println(damageAmount);
+
+        if (damageAmount > 0) {
+            flash();
+            addToBot(new HealAction(owner, owner, amount));
+        }
+
+        return super.onLoseHp(damageAmount);
+    }
+
+    @Override
+    public int onAttacked(DamageInfo info, int damageAmount) {
+        System.out.println("what");
+        System.out.println(damageAmount);
+        return super.onAttacked(info, damageAmount);
     }
 }

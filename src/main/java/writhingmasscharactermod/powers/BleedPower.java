@@ -4,10 +4,11 @@ import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import writhingmasscharactermod.util.OnLoseMonsterHpPower;
 
 import static writhingmasscharactermod.WrithingMassCharacterMod.makeID;
 
-public class BleedPower extends BasePower {
+public class BleedPower extends BasePower implements OnLoseMonsterHpPower {
     public static final String POWER_ID = makeID("Bleed");
     private static final AbstractPower.PowerType TYPE = PowerType.DEBUFF;
     private static final boolean TURN_BASED = true;
@@ -30,6 +31,11 @@ public class BleedPower extends BasePower {
         return damage;
     }
 
+    @Override
+    public int onLoseHp(int damageAmount) {
+        return super.onLoseHp(damageAmount) + amount;
+    }
+
     public void updateDescription() {
         description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
     }
@@ -37,5 +43,13 @@ public class BleedPower extends BasePower {
     @Override
     public void atEndOfRound() {
         addToBot(new ReducePowerAction(owner, owner, this, 1));
+    }
+
+    @Override
+    public int onLoseMonsterHp(DamageInfo info, int damageAmount) {
+        if (info.type != DamageInfo.DamageType.NORMAL) {
+            return damageAmount + amount;
+        }
+        return damageAmount;
     }
 }

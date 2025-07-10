@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.actions.utility.LoseBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import writhingmasscharactermod.actions.AddRealTemporaryHPAction;
 import writhingmasscharactermod.cards.BaseCard;
 import writhingmasscharactermod.character.WrithingMassCharacter;
 import writhingmasscharactermod.util.CardStats;
@@ -42,7 +43,7 @@ public class Osmosis extends BaseCard {
             public void update() {
                 int blockToConvert = p.currentBlock;
                 AbstractDungeon.actionManager.addToBottom(new RemoveAllBlockAction(p, p));
-                AbstractDungeon.actionManager.addToBottom(new AddTemporaryHPAction(p, p, blockToConvert));
+                AbstractDungeon.actionManager.addToBottom(new AddRealTemporaryHPAction(p, p, blockToConvert));
                 isDone = true;
             }
         });

@@ -62,7 +62,7 @@
       "form",
       "forms"
     ],
-    "DESCRIPTION": "A player state determined by current health as a percentage of Max HP."
+    "DESCRIPTION": "A player state determined by current (permanent) health as a percentage of Max HP."
   },
   {
     "PROPER_NAME": "Constricted",
