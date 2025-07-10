@@ -143,5 +143,9 @@
   "${modID}:Coalesce": {
     "NAME": "Coalesce",
     "DESCRIPTION": "Lose !M! HP. NL Gain !${modID}:coalescegain! ${modID}:Temporary_HP."
+  },
+  "${modID}:Nibble": {
+    "NAME": "Nibble",
+    "DESCRIPTION": "Take !M! damage. NL Raise your Max HP by !${modID}:nibblegain!. NL Exhaust."
   }
 }
