@@ -183,5 +183,13 @@
   "${modID}:Kiss": {
     "NAME": "Kiss",
     "DESCRIPTION": "Deal !D! damage. NL Gain !M! Regen."
+  },
+  "${modID}:PowerBottom": {
+    "NAME": "Power Bottom",
+    "DESCRIPTION": "Deal damage equal to double the number of cards in your discard pile.",
+    "UPGRADE_DESCRIPTION": "Scry !M!. NL Deal damage equal to double the number of cards in your discard pile.",
+    "EXTENDED_DESCRIPTION": [
+      " NL (Deals !D! damage.)"
+    ]
   }
 }
