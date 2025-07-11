@@ -33,9 +33,6 @@ public class JokesOnYouPower extends BasePower {
 
     @Override
     public int onLoseHp(int damageAmount) {
-        System.out.println("got here");
-        System.out.println(damageAmount);
-
         if (damageAmount > 0) {
             flash();
             addToBot(new HealAction(owner, owner, amount));

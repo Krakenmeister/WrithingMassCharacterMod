@@ -30,6 +30,8 @@ public class RunicTrianglePower extends BasePower {
     public void wasHPLost(DamageInfo info, int damageAmount) {
         super.wasHPLost(info, damageAmount);
 
+        flash();
+
         addToBot(new DrawCardAction(amount));
     }
 }

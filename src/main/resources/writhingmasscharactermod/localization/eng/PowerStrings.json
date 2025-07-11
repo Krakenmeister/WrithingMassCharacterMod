@@ -101,11 +101,19 @@
     ]
   },
   "${modID}:RunicTriangle": {
-    "NAME": "RunicTriangle",
+    "NAME": "Runic Triangle",
     "DESCRIPTIONS": [
       "Whenever you lose HP, draw #b1 card.",
       "Whenever you lose HP, draw #b",
       " cards."
+    ]
+  },
+  "${modID}:CoilLash": {
+    "NAME": "Coil Lash",
+    "DESCRIPTIONS": [
+      "Whenever you change #yForms, add #b1 #yWhip into your hand.",
+      "Whenever you change #yForms, add #b",
+      " #yWhips into your hand."
     ]
   }
 }

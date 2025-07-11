@@ -26,11 +26,13 @@ public class EndlessHungerPower extends BasePower implements OnEnemyDeathPower {
     }
 
     public void atEndOfTurn(boolean isPlayer) {
+        flash();
         AbstractDungeon.player.decreaseMaxHealth(amount2);
     }
 
     @Override
     public void onEnemyDeath(AbstractMonster m) {
+        flash();
         AbstractDungeon.player.increaseMaxHp(amount, true);
     }
 }
