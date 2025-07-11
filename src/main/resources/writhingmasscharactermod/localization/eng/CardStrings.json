@@ -204,5 +204,9 @@
   "${modID}:Wrigglewall": {
     "NAME": "Wrigglewall",
     "DESCRIPTION": "${modID}:Malleable does not reset at the start of your turn."
+  },
+  "${modID}:Amalgamate": {
+    "NAME": "Amalgamate",
+    "DESCRIPTION": "Raise you Max HP by !M!. NL Exhaust."
   }
 }
