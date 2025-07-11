@@ -191,5 +191,10 @@
     "EXTENDED_DESCRIPTION": [
       " NL (Deals !D! damage.)"
     ]
+  },
+  "${modID}:Kiss": {
+    "NAME": "Kiss",
+    "DESCRIPTION": "Gain [E] [E] NL Enemy gains !${modID}:kissgain! Strength.",
+    "UPGRADE_DESCRIPTION": "Gain [E] [E] [E] NL Enemy gains !${modID}:kissgain! Strength."
   }
 }
