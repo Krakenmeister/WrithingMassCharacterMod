@@ -208,5 +208,10 @@
   "${modID}:Amalgamate": {
     "NAME": "Amalgamate",
     "DESCRIPTION": "Raise you Max HP by !M!. NL Exhaust."
+  },
+  "${modID}:RunicTriangle": {
+    "NAME": "Runic Triangle",
+    "DESCRIPTION": "Whenever you lose HP, draw !M! card{@@}{!M!|1=|@=s}.",
+    "UPGRADE_DESCRIPTION": "Innate. NL Whenever you lose HP, draw !M! card{@@}{!M!|1=|@=s}."
   }
 }

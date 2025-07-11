@@ -99,5 +99,13 @@
     "DESCRIPTIONS": [
       "#yMalleable does not reset at the start of your turn."
     ]
+  },
+  "${modID}:RunicTriangle": {
+    "NAME": "RunicTriangle",
+    "DESCRIPTIONS": [
+      "Whenever you lose HP, draw #b1 card.",
+      "Whenever you lose HP, draw #b",
+      " cards."
+    ]
   }
 }
