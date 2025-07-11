@@ -83,5 +83,14 @@
       "Upon losing HP, you heal #b",
       " HP."
     ]
+  },
+  "${modID}:RealMalleable": {
+    "NAME": "Malleable",
+    "DESCRIPTIONS": [
+      "Upon receiving attack damage, gains #b",
+      " #yBlock. #yBlock gain increases as ",
+      " is triggered. Resets to #b",
+      " at the start of your turn."
+    ]
   }
 }

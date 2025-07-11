@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.powers.MalleablePower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import writhingmasscharactermod.character.WrithingMassCharacter;
+import writhingmasscharactermod.powers.RealMalleablePower;
 import writhingmasscharactermod.powers.ResiliencePower;
 import writhingmasscharactermod.relics.BaseRelic;
 
@@ -30,7 +31,7 @@ public class MalignantTumor extends BaseRelic {
     public void atBattleStart() {
         this.flash();
         this.addToBot(new RelicAboveCreatureAction(AbstractDungeon.player, this));
-        this.addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new MalleablePower(AbstractDungeon.player, STARTING_MALLEABLE), STARTING_MALLEABLE));
+        this.addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new RealMalleablePower(AbstractDungeon.player, STARTING_MALLEABLE), STARTING_MALLEABLE));
         this.grayscale = true;
     }
 

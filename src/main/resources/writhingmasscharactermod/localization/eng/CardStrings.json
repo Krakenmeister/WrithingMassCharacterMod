@@ -48,7 +48,7 @@
   },
   "${modID}:FinalForm": {
     "NAME": "Final Form",
-    "DESCRIPTION": "Set HP to 1. NL Gain !${modID}:finalformintangible! Intangible. NL Gain !M! Buffer."
+    "DESCRIPTION": "Set HP to 1. NL Gain !M! Strength."
   },
   "${modID}:Husk": {
     "NAME": "Husk",
@@ -196,5 +196,9 @@
     "NAME": "Kiss",
     "DESCRIPTION": "Gain [E] [E] NL Enemy gains !${modID}:kissgain! Strength.",
     "UPGRADE_DESCRIPTION": "Gain [E] [E] [E] NL Enemy gains !${modID}:kissgain! Strength."
+  },
+  "${modID}:Slough": {
+    "NAME": "Slough",
+    "DESCRIPTION": "Gain !M! ${modID}:Malleable."
   }
 }

@@ -105,5 +105,12 @@
       "temporary_hp"
     ],
     "DESCRIPTION": "HP that is not kept at the end of combat. Does not affect #yForm."
+  },
+  {
+    "PROPER_NAME": "Malleable",
+    "NAMES": [
+      "malleable"
+    ],
+    "DESCRIPTION": "Upon receiving attack damage, gains block. Increases block gained with consecutive attacks."
   }
 ]
