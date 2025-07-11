@@ -90,7 +90,14 @@
       "Upon receiving attack damage, gains #b",
       " #yBlock. #yBlock gain increases as ",
       " is triggered. Resets to #b",
-      " at the start of your turn."
+      " at the start of your turn.",
+      " is triggered."
+    ]
+  },
+  "${modID}:Wrigglewall": {
+    "NAME": "Wrigglewall",
+    "DESCRIPTIONS": [
+      "#yMalleable does not reset at the start of your turn."
     ]
   }
 }

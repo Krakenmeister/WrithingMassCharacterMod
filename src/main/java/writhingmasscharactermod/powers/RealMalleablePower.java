@@ -33,7 +33,19 @@ public class RealMalleablePower extends BasePower {
     }
 
     public void updateDescription() {
-        this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1] + NAME + DESCRIPTIONS[2] + this.amount2 + DESCRIPTIONS[3];
+        if (!owner.hasPower(WrigglewallPower.POWER_ID)) {
+            this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1] + NAME + DESCRIPTIONS[2] + this.amount2 + DESCRIPTIONS[3];
+        } else {
+            this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1] + NAME + DESCRIPTIONS[4];
+        }
+    }
+
+    public void updateDescription(boolean hasWriggleWall) {
+        if (!hasWriggleWall) {
+            this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1] + NAME + DESCRIPTIONS[2] + this.amount2 + DESCRIPTIONS[3];
+        } else {
+            this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1] + NAME + DESCRIPTIONS[4];
+        }
     }
 
     public void atEndOfTurn(boolean isPlayer) {
@@ -45,7 +57,11 @@ public class RealMalleablePower extends BasePower {
 
     public void atEndOfRound() {
         if (this.owner.isPlayer) {
-            this.amount = this.amount2;
+            if (!owner.hasPower(WrigglewallPower.POWER_ID)) {
+                this.amount = this.amount2;
+            } else {
+                this.amount2 = 0;
+            }
             this.updateDescription();
         }
     }
@@ -90,7 +106,7 @@ public class RealMalleablePower extends BasePower {
             FontHelper.renderFontRightTopAligned(sb, FontHelper.powerAmountFont, Integer.toString(this.amount), x + 5.0F * Settings.scale, y - 7.0F * Settings.scale, this.fontScale, c);
         }
 
-        if (this.amount2 != 0) {
+        if (this.amount2 != 0 && !owner.hasPower(WrigglewallPower.POWER_ID)) {
             if (!this.isTurnBased) {
                 float alpha = c.a;
                 c = this.amount2 > 0 ? this.greenColor : this.redColor2;

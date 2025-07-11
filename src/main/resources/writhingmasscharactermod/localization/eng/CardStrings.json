@@ -200,5 +200,9 @@
   "${modID}:Slough": {
     "NAME": "Slough",
     "DESCRIPTION": "Gain !M! ${modID}:Malleable."
+  },
+  "${modID}:Wrigglewall": {
+    "NAME": "Wrigglewall",
+    "DESCRIPTION": "${modID}:Malleable does not reset at the start of your turn."
   }
 }
