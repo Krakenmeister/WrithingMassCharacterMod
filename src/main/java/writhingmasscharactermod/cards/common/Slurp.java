@@ -12,8 +12,8 @@ import writhingmasscharactermod.cards.BaseCard;
 import writhingmasscharactermod.character.WrithingMassCharacter;
 import writhingmasscharactermod.util.CardStats;
 
-public class Kiss extends BaseCard {
-    public static final String ID = makeID("Kiss");
+public class Slurp extends BaseCard {
+    public static final String ID = makeID("Slurp");
     private static final CardStats info = new CardStats(
             WrithingMassCharacter.Meta.CARD_COLOR,
             CardType.ATTACK,
@@ -28,7 +28,7 @@ public class Kiss extends BaseCard {
     private static final int MAGIC_NUMBER = 3;
     private static final int UPG_MAGIC_NUMBER = 1;
 
-    public Kiss() {
+    public Slurp() {
         super(ID, info);
 
         setDamage(DAMAGE, UPG_DAMAGE);
