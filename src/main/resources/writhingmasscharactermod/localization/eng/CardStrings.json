@@ -56,7 +56,7 @@
   },
   "${modID}:Sadism": {
     "NAME": "Sadism",
-    "DESCRIPTION": "Whenever you play an Attack this turn, heal !M! HP."
+    "DESCRIPTION": "Whenever you play an Attack this turn, gain !M! HP."
   },
   "${modID}:Infestation": {
     "NAME": "Infestation",
@@ -82,7 +82,7 @@
   },
   "${modID}:FleshyAbundance": {
     "NAME": "Fleshy Abundance",
-    "DESCRIPTION": "Heal !M! HP X times."
+    "DESCRIPTION": "Gain !M! HP X times."
   },
   "${modID}:Laceration": {
     "NAME": "Laceration",
@@ -94,7 +94,7 @@
   },
   "${modID}:Aftercare": {
     "NAME": "Aftercare",
-    "DESCRIPTION": "Heal !M! HP. NL Draw 1 card."
+    "DESCRIPTION": "Gain !M! HP. NL Draw 1 card."
   },
   "${modID}:Ravage": {
     "NAME": "Ravage",
@@ -110,7 +110,7 @@
   },
   "${modID}:JokesOnYou": {
     "NAME": "Joke's On You",
-    "DESCRIPTION": "Whenever you take unblocked damage until next turn, heal !M! HP."
+    "DESCRIPTION": "Whenever you take unblocked damage until next turn, gain !M! HP."
   },
   "${modID}:Climax": {
     "NAME": "Climax",
@@ -166,7 +166,7 @@
   },
   "${modID}:Proboscis": {
     "NAME": "Proboscis",
-    "DESCRIPTION": "Deal !D! damage. NL Whenever this enemy loses HP, heal !M! HP. NL Exhaust."
+    "DESCRIPTION": "Deal !D! damage. NL Whenever this enemy loses HP, gain !M! HP. NL Exhaust."
   },
   "${modID}:Needle": {
     "NAME": "Needle",
@@ -217,5 +217,12 @@
   "${modID}:CoilLash": {
     "NAME": "Coil Lash",
     "DESCRIPTION": "Whenever you change ${modID}:Forms, add !M! *Whip{@@}{!M!|1=|@=s} into your hand."
+  },
+  "${modID}:Rot": {
+    "NAME": "Rot",
+    "DESCRIPTION": "Unplayable. NL Whenever you gain HP with this card in hand, increase HP gained by !M!.",
+    "EXTENDED_DESCRIPTION": [
+      "I can't play this card."
+    ]
   }
 }

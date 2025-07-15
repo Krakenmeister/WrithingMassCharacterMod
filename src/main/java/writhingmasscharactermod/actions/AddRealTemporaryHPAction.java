@@ -1,16 +1,26 @@
 package writhingmasscharactermod.actions;
 
-import com.evacipated.cardcrawl.mod.stslib.patches.core.AbstractCreature.TempHPField;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.combat.HealEffect;
 import writhingmasscharactermod.patches.realtemphp.RealTempHPField;
+import writhingmasscharactermod.util.OnHealCard;
 
 
 public class AddRealTemporaryHPAction extends AbstractGameAction {
     public AddRealTemporaryHPAction(AbstractCreature target, AbstractCreature source, int amount) {
-        this.setValues(target, source, amount);
+        int healAmount = amount;
+        if (target.isPlayer) {
+            for(AbstractCard card : ((AbstractPlayer)target).hand.group) {
+                if (card instanceof OnHealCard) {
+                    healAmount = ((OnHealCard)card).onHeal(healAmount);
+                }
+            }
+        }
+        this.setValues(target, source, healAmount);
         this.actionType = ActionType.HEAL;
     }
 

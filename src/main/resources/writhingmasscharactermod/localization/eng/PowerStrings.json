@@ -37,7 +37,7 @@
   "${modID}:Sadism": {
     "NAME": "Sadism",
     "DESCRIPTIONS": [
-      "Whenever you play an #yAttack this turn, heal #b",
+      "Whenever you play an #yAttack this turn, gain #b",
       " HP."
     ]
   },
@@ -66,7 +66,7 @@
   "${modID}:JokesOnYou": {
     "NAME": "Joke's On You",
     "DESCRIPTIONS": [
-      "Whenever you take unblocked damage until next turn, heal #b",
+      "Whenever you take unblocked damage until next turn, gain #b",
       " HP."
     ]
   },
