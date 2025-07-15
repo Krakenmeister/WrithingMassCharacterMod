@@ -115,5 +115,11 @@
       "Whenever you change #yForms, add #b",
       " #yWhips into your hand."
     ]
+  },
+  "${modID}:Cocoon": {
+    "NAME": "Cocoon",
+    "DESCRIPTIONS": [
+      "When you end your turn in #yMolt #yForm, #yRetain your hand."
+    ]
   }
 }

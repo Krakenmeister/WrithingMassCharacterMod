@@ -231,5 +231,9 @@
     "EXTENDED_DESCRIPTION": [
       "I can't play this card."
     ]
+  },
+  "${modID}:Cocoon": {
+    "NAME": "Cocoon",
+    "DESCRIPTION": "When you end your turn in ${modID}:Molt_Form, Retain your hand."
   }
 }
