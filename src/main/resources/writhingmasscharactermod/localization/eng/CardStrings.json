@@ -220,7 +220,14 @@
   },
   "${modID}:Rot": {
     "NAME": "Rot",
-    "DESCRIPTION": "Unplayable. NL Whenever you gain HP with this card in hand, increase HP gained by !M!.",
+    "DESCRIPTION": "Unplayable. NL Whenever you gain HP with this card in hand, gain !M! more.",
+    "EXTENDED_DESCRIPTION": [
+      "I can't play this card."
+    ]
+  },
+  "${modID}:SecondSkin": {
+    "NAME": "Second Skin",
+    "DESCRIPTION": "Unplayable. NL Whenever you gain Block with this card in hand, gain !M! more.",
     "EXTENDED_DESCRIPTION": [
       "I can't play this card."
     ]
