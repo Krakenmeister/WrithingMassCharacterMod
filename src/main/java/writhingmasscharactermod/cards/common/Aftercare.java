@@ -19,7 +19,7 @@ public class Aftercare extends BaseCard {
             0
     );
 
-    private static final int MAGIC_NUMBER = 2;
+    private static final int MAGIC_NUMBER = 3;
     private static final int UPG_MAGIC_NUMBER = 2;
 
     public Aftercare() {

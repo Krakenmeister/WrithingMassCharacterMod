@@ -18,8 +18,8 @@ public class SecondSkin extends BaseCard implements OnBlockCard {
             -2
     );
 
-    private static final int MAGIC_NUMBER = 2;
-    private static final int UPG_MAGIC_NUMBER = 1;
+    private static final int MAGIC_NUMBER = 3;
+    private static final int UPG_MAGIC_NUMBER = 5;
 
     public SecondSkin() {
         super(ID, info);

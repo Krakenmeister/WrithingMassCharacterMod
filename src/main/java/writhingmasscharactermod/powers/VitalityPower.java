@@ -14,15 +14,12 @@ public class VitalityPower extends BasePower {
 
     public VitalityPower(AbstractCreature owner, int amount) {
         super(POWER_ID, TYPE, TURN_BASED, owner, amount);
-
-        if (this.amount >= 9999) {
-            this.amount = 9999;
-        }
+        this.canGoNegative = true;
     }
 
     @Override
     public int onHeal(int healAmount) {
-        healAmount++;
+        healAmount = healAmount + amount;
 
         return super.onHeal(healAmount);
     }

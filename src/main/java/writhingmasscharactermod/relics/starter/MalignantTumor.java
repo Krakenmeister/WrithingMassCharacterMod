@@ -18,7 +18,7 @@ public class MalignantTumor extends BaseRelic {
     public static final String ID = makeID(NAME);
     private static final RelicTier RARITY = RelicTier.STARTER;
     private static final LandingSound SOUND = LandingSound.HEAVY;
-    private static final int STARTING_MALLEABLE = 3;
+    private static final int STARTING_MALLEABLE = 1;
 
     public MalignantTumor() {
         super(ID, NAME, WrithingMassCharacter.Meta.CARD_COLOR, RARITY, SOUND);

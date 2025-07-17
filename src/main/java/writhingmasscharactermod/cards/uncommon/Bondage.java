@@ -10,8 +10,8 @@ import writhingmasscharactermod.cards.BaseCard;
 import writhingmasscharactermod.character.WrithingMassCharacter;
 import writhingmasscharactermod.util.CardStats;
 
-public class Asphyxiation extends BaseCard {
-    public static final String ID = makeID("Asphyxiation");
+public class Bondage extends BaseCard {
+    public static final String ID = makeID("Bondage");
     private static final CardStats info = new CardStats(
             WrithingMassCharacter.Meta.CARD_COLOR,
             CardType.SKILL,
@@ -26,7 +26,7 @@ public class Asphyxiation extends BaseCard {
     private static final int MAGIC_NUMBER = 3;
     private static final int UPG_MAGIC_NUMBER = -1;
 
-    public Asphyxiation() {
+    public Bondage() {
         super(ID, info);
 
         setBlock(BLOCK, UPG_BLOCK);

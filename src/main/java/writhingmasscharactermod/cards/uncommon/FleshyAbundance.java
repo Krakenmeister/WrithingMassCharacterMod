@@ -17,7 +17,7 @@ public class FleshyAbundance extends BaseCard {
             -1
     );
 
-    private static final int MAGIC_NUMBER = 5;
+    private static final int MAGIC_NUMBER = 6;
     private static final int UPG_MAGIC_NUMBER = 3;
 
     public FleshyAbundance() {

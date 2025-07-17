@@ -17,7 +17,7 @@ public class Amalgamate extends BaseCard {
             3
     );
 
-    private static final int MAGIC_NUMBER = 8;
+    private static final int MAGIC_NUMBER = 7;
     private static final int UPG_MAGIC_NUMBER = 3;
 
     public Amalgamate() {

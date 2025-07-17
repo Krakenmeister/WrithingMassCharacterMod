@@ -302,7 +302,7 @@ public class WrithingMassCharacter extends CustomPlayer {
     public void applyStartOfCombatLogic() {
         super.applyStartOfCombatLogic();
 
-        this.addPower(new EndlessHungerPower(this, 1, 3));
+        //this.addPower(new EndlessHungerPower(this, 1, 3));
     }
 
     @Override

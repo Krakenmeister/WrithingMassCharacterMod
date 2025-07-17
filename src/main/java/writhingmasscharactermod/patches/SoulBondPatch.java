@@ -29,20 +29,24 @@ public class SoulBondPatch {
     )
     public static void applySoulBondDamage(AbstractPlayer __instance, int ___damageAmount)
     {
-        for (AbstractMonster monster : AbstractDungeon.getMonsters().monsters) {
-            if (monster.hasPower(SoulBondPower.POWER_ID) && ___damageAmount > 0) {
-                DamageInfo soulBondDamage = new DamageInfo(__instance, ___damageAmount, DamageInfo.DamageType.HP_LOSS);
-                soulBondDamage.applyPowers(__instance, monster);
-                for (int i = 0; i < monster.getPower(SoulBondPower.POWER_ID).amount; i++) {
-                    monster.addToTop(new DamageAction(monster, soulBondDamage, AbstractGameAction.AttackEffect.NONE));
-                }
+        try {
+            for (AbstractMonster monster : AbstractDungeon.getMonsters().monsters) {
+                if (monster.hasPower(SoulBondPower.POWER_ID) && ___damageAmount > 0) {
+                    DamageInfo soulBondDamage = new DamageInfo(__instance, ___damageAmount, DamageInfo.DamageType.HP_LOSS);
+                    soulBondDamage.applyPowers(__instance, monster);
+                    for (int i = 0; i < monster.getPower(SoulBondPower.POWER_ID).amount; i++) {
+                        monster.addToTop(new DamageAction(monster, soulBondDamage, AbstractGameAction.AttackEffect.NONE));
+                    }
 
-                if (Settings.FAST_MODE) {
-                    monster.addToTop(new VFXAction(new ModularOfferingEffect(monster), 0.1F));
-                } else {
-                    monster.addToTop(new VFXAction(new ModularOfferingEffect(monster), 0.5F));
+                    if (Settings.FAST_MODE) {
+                        monster.addToTop(new VFXAction(new ModularOfferingEffect(monster), 0.1F));
+                    } else {
+                        monster.addToTop(new VFXAction(new ModularOfferingEffect(monster), 0.5F));
+                    }
                 }
             }
+        } catch (Exception e) {
+
         }
     }
 }

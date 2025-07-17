@@ -121,8 +121,8 @@
     "DESCRIPTION": "Deal !D! damage. NL Add a copy of a card from your discard pile into your hand. NL Exhaust.",
     "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Add a copy of a card from your discard pile into your hand."
   },
-  "${modID}:Asphyxiation": {
-    "NAME": "Asphyxiation",
+  "${modID}:Bondage": {
+    "NAME": "Bondage",
     "DESCRIPTION": "Gain !B! Block. NL Gain !M! ${modID}:Constricted."
   },
   "${modID}:Scarhide": {
@@ -132,7 +132,7 @@
   },
   "${modID}:Bloat": {
     "NAME": "Bloat",
-    "DESCRIPTION": "Gain !B! Block. If in ${modID}:Molt_Form, gain !B! Block again."
+    "DESCRIPTION": "Gain !B! Block. NL If in ${modID}:Molt_Form, gain !B! Block again."
   },
   "${modID}:Deluge": {
     "NAME": "Deluge",
@@ -203,7 +203,7 @@
   },
   "${modID}:Wrigglewall": {
     "NAME": "Wrigglewall",
-    "DESCRIPTION": "${modID}:Malleable does not reset at the start of your turn."
+    "DESCRIPTION": "${modID}:Malleable does not reset at the start of your turn. NL Lose !M! ${modID}:Vitality"
   },
   "${modID}:Amalgamate": {
     "NAME": "Amalgamate",
