@@ -20,8 +20,8 @@ public class Slough extends BaseCard {
             1
     );
 
-    private static final int MAGIC_NUMBER = 5;
-    private static final int UPG_MAGIC_NUMBER = 3;
+    private static final int MAGIC_NUMBER = 4;
+    private static final int UPG_MAGIC_NUMBER = 2;
 
     public Slough() {
         super(ID, info);

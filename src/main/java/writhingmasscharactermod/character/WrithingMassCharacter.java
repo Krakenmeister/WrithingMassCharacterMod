@@ -6,6 +6,7 @@ import basemod.abstracts.CustomPlayer;
 import basemod.animations.SpineAnimation;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -19,6 +20,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.FontHelper;
+import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import com.esotericsoftware.spine.AnimationState;
@@ -334,6 +336,30 @@ public class WrithingMassCharacter extends CustomPlayer {
 
         }
 
+    }
+
+    @Override
+    public void renderHealth(SpriteBatch sb) {
+        float HEALTH_BAR_HEIGHT = 20.0F * Settings.scale;
+        float HEALTH_BG_OFFSET_X = 31.0F * Settings.scale;
+
+        if (!Settings.hideCombatElements) {
+            float x = hb.cX - hb.width / 2.0F;
+            float y = hb.cY - hb.height / 2.0F;
+
+            float leftX = x - HEALTH_BAR_HEIGHT + 10.0F * Settings.scale;
+            float rightX = x + hb.width - 10.0F * Settings.scale;
+
+            float iconHeight = HEALTH_BAR_HEIGHT * 1.8F;
+            float iconY = y - HEALTH_BG_OFFSET_X + 3.0F * Settings.scale - (HEALTH_BAR_HEIGHT * 0.4F);
+
+            sb.setColor(Color.MAGENTA);
+            sb.draw(ImageMaster.loadImage(characterPath("indicator.png")), leftX + (rightX - leftX) / 3, iconY, HEALTH_BAR_HEIGHT, iconHeight);
+            sb.setColor(Color.GREEN);
+            sb.draw(ImageMaster.loadImage(characterPath("indicator.png")), leftX + 2 * (rightX - leftX) / 3, iconY, HEALTH_BAR_HEIGHT, iconHeight);
+        }
+
+        super.renderHealth(sb);
     }
 
     //    @Override

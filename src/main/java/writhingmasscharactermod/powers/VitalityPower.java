@@ -26,5 +26,10 @@ public class VitalityPower extends BasePower {
 
     public void updateDescription() {
         description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
+        if (amount > 0) {
+            type = PowerType.BUFF;
+        } else if (amount < 0) {
+            type = PowerType.DEBUFF;
+        }
     }
 }

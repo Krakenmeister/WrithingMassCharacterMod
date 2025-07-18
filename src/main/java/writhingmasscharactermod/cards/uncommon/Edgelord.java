@@ -2,15 +2,19 @@ package writhingmasscharactermod.cards.uncommon;
 
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import writhingmasscharactermod.actions.IncreasePlayerMaxHpAction;
 import writhingmasscharactermod.cards.BaseCard;
 import writhingmasscharactermod.character.WrithingMassCharacter;
+import writhingmasscharactermod.forms.AbstractForm;
+import writhingmasscharactermod.forms.HighForm;
 import writhingmasscharactermod.forms.LowForm;
 import writhingmasscharactermod.patches.FormFieldPatch;
 import writhingmasscharactermod.util.CardStats;
+import writhingmasscharactermod.util.FormChangeTrigger;
 
-public class Edgelord extends BaseCard {
+public class Edgelord extends BaseCard implements FormChangeTrigger {
     public static final String ID = makeID("Edgelord");
     private static final CardStats info = new CardStats(
             WrithingMassCharacter.Meta.CARD_COLOR,
@@ -35,6 +39,19 @@ public class Edgelord extends BaseCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (FormFieldPatch.form.get(p).ID.equals(LowForm.FORM_ID)) {
             addToBot(new IncreasePlayerMaxHpAction(p, magicNumber, true));
+        }
+    }
+
+    @Override
+    public void triggerExhaustedCardsOnFormChange(AbstractForm form) {
+        triggerOnGlowCheck();
+    }
+
+    public void triggerOnGlowCheck() {
+        this.glowColor = AbstractCard.BLUE_BORDER_GLOW_COLOR.cpy();
+
+        if (FormFieldPatch.form.get(AbstractDungeon.player).ID.equals(LowForm.FORM_ID)) {
+            this.glowColor = AbstractCard.GOLD_BORDER_GLOW_COLOR.cpy();
         }
     }
 }

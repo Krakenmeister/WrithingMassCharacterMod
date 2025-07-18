@@ -5,7 +5,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import writhingmasscharactermod.cards.BaseCard;
 import writhingmasscharactermod.character.WrithingMassCharacter;
-import writhingmasscharactermod.powers.SoulBondPower;
 import writhingmasscharactermod.powers.ToxicRecoilPower;
 import writhingmasscharactermod.util.CardStats;
 

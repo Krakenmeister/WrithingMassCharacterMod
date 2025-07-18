@@ -17,9 +17,7 @@ import com.megacrit.cardcrawl.vfx.combat.WeightyImpactEffect;
 import writhingmasscharactermod.cards.BaseCard;
 import writhingmasscharactermod.character.WrithingMassCharacter;
 import writhingmasscharactermod.patches.realtemphp.RealTempHPField;
-import writhingmasscharactermod.powers.SoulBondPower;
 import writhingmasscharactermod.util.CardStats;
-import writhingmasscharactermod.util.GeneralUtils;
 
 public class MassDestruction extends BaseCard {
     private static final CardStrings cardStrings;
