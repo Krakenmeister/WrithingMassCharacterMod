@@ -14,8 +14,8 @@ import writhingmasscharactermod.cards.BaseCard;
 import writhingmasscharactermod.character.WrithingMassCharacter;
 import writhingmasscharactermod.util.CardStats;
 
-public class Infestation extends BaseCard {
-    public static final String ID = makeID("Infestation");
+public class Infection extends BaseCard {
+    public static final String ID = makeID("Infection");
     private static final CardStats info = new CardStats(
             WrithingMassCharacter.Meta.CARD_COLOR,
             AbstractCard.CardType.SKILL,
@@ -27,7 +27,7 @@ public class Infestation extends BaseCard {
     private static final int MAGIC_NUMBER = 4;
     private static final int UPG_MAGIC_NUMBER = 2;
 
-    public Infestation() {
+    public Infection() {
         super(ID, info);
 
         setMagic(MAGIC_NUMBER, UPG_MAGIC_NUMBER);

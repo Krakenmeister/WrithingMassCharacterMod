@@ -1,15 +1,20 @@
 package writhingmasscharactermod.cards.common;
 
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.HealAction;
+import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import writhingmasscharactermod.cards.BaseCard;
 import writhingmasscharactermod.character.WrithingMassCharacter;
 import writhingmasscharactermod.util.CardStats;
+import writhingmasscharactermod.util.WrithingCard;
 
-public class Aftercare extends BaseCard {
+public class Aftercare extends WrithingCard {
     public static final String ID = makeID("Aftercare");
     private static final CardStats info = new CardStats(
             WrithingMassCharacter.Meta.CARD_COLOR,
@@ -23,14 +28,40 @@ public class Aftercare extends BaseCard {
     private static final int UPG_MAGIC_NUMBER = 1;
 
     public Aftercare() {
-        super(ID, info);
+        this(true, true);
+    }
+
+    public Aftercare(boolean isBenign, boolean previewCards) {
+        super(ID, info, isBenign);
+
+        setBenign(isBenign);
+        setMutable(true);
+
+        if (previewCards) {
+            cardsToPreview = new Aftercare(!isBenign, false);
+        }
 
         setMagic(MAGIC_NUMBER, UPG_MAGIC_NUMBER);
     }
 
     @Override
-    public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new HealAction(p, p, magicNumber));
+    protected String updateCardText(boolean isBenign) {
+        if (isBenign) {
+            return cardStrings.DESCRIPTION;
+        } else {
+            return cardStrings.EXTENDED_DESCRIPTION[0];
+        }
+    }
+
+    @Override
+    public void benignUse(AbstractCreature source, AbstractCreature target) {
+        addToBot(new HealAction(source, source, magicNumber));
+        addToBot(new DrawCardAction(1));
+    }
+
+    @Override
+    public void malignantUse(AbstractCreature source, AbstractCreature target) {
+        addToBot(new LoseHPAction(source, source, magicNumber));
         addToBot(new DrawCardAction(1));
     }
 }

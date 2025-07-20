@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import writhingmasscharactermod.util.WrithingCard;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -441,6 +442,12 @@ public abstract class BaseCard extends CustomCard {
                 target.upgrade = current.upgrade;
                 target.calculation = current.calculation;
             }
+        }
+
+        if (candidate instanceof WrithingCard) {
+            ((WrithingCard) candidate).setOwner(((WrithingCard) this).owner);
+            ((WrithingCard) candidate).setBenign(((WrithingCard) this).isBenign);
+            ((WrithingCard) candidate).isMutable = ((WrithingCard) this).isMutable;
         }
 
         return candidate;

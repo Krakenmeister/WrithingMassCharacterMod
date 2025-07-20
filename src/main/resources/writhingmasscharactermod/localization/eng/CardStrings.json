@@ -11,11 +11,17 @@
   },
   "${modID}:Strike": {
     "NAME": "Strike",
-    "DESCRIPTION": "Deal !D! damage."
+    "DESCRIPTION": "${modID}:Mutable. NL Deal !D! damage.",
+    "EXTENDED_DESCRIPTION": [
+      "${modID}:Mutable. NL Deal !D! damage to self."
+    ]
   },
   "${modID}:Defend": {
     "NAME": "Defend",
-    "DESCRIPTION": "Gain !B! Block."
+    "DESCRIPTION": "${modID}:Mutable. NL Gain !B! Block.",
+    "EXTENDED_DESCRIPTION": [
+      "${modID}:Mutable. NL Lose !B! Block."
+    ]
   },
   "${modID}:Whip": {
     "NAME": "Whip",
@@ -58,8 +64,8 @@
     "NAME": "Sadism",
     "DESCRIPTION": "Whenever you play an Attack this turn, gain !M! HP."
   },
-  "${modID}:Infestation": {
-    "NAME": "Infestation",
+  "${modID}:Infection": {
+    "NAME": "Infection",
     "DESCRIPTION": "Apply !M! Poison. NL Add a copy of this card into your discard pile."
   },
   "${modID}:Bloom": {
@@ -94,7 +100,10 @@
   },
   "${modID}:Aftercare": {
     "NAME": "Aftercare",
-    "DESCRIPTION": "Gain !M! HP. NL Draw 1 card."
+    "DESCRIPTION": "${modID}:Mutable. NL Gain !M! HP. NL Draw 1 card.",
+    "EXTENDED_DESCRIPTION": [
+      "${modID}:Mutable. NL Lose !M! HP. NL Draw 1 card."
+    ]
   },
   "${modID}:Ravage": {
     "NAME": "Ravage",
@@ -235,5 +244,13 @@
   "${modID}:Cocoon": {
     "NAME": "Cocoon",
     "DESCRIPTION": "When you end your turn in ${modID}:Molt_Form, Retain your hand."
+  },
+  "${modID}:Morph": {
+    "NAME": "Morph",
+    "DESCRIPTION": "Deal !D! damage. NL ${modID}:Mutate !M! card{@@}{!M!|1=|@=s}."
+  },
+  "${modID}:Implant": {
+    "NAME": "Implant",
+    "DESCRIPTION": "${modID}:Inert NL ${modID}:Infest !M! card{@@}{!M!|1=|@=s}."
   }
 }

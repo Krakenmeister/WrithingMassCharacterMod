@@ -27,7 +27,6 @@ public class LowForm extends AbstractForm {
     }
 
     public float atDamageGive(float damage, DamageInfo.DamageType type) {
-        System.out.println("I WAS CALLED");
         return type == DamageInfo.DamageType.NORMAL ? damage * 2.0F : damage;
     }
 

@@ -1,16 +1,15 @@
 package writhingmasscharactermod.character;
 
 import basemod.BaseMod;
-import basemod.abstracts.CustomEnergyOrb;
 import basemod.abstracts.CustomPlayer;
 import basemod.animations.SpineAnimation;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.watcher.ChangeStanceAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -22,21 +21,22 @@ import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import com.esotericsoftware.spine.AnimationState;
-import writhingmasscharactermod.cards.basic.Defend;
-import writhingmasscharactermod.cards.basic.Flagella;
-import writhingmasscharactermod.cards.basic.Spank;
-import writhingmasscharactermod.cards.basic.Strike;
+import writhingmasscharactermod.cards.basic.*;
 import writhingmasscharactermod.forms.ChangeFormAction;
 import writhingmasscharactermod.forms.HighForm;
 import writhingmasscharactermod.forms.LowForm;
 import writhingmasscharactermod.forms.MidForm;
-import writhingmasscharactermod.powers.EndlessHungerPower;
-import writhingmasscharactermod.relics.starter.MalignantTumor;
+import writhingmasscharactermod.relics.starter.Tumor;
+import writhingmasscharactermod.util.WrithingCard;
 import writhingmasscharactermod.util.WrithingMassOrb;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static writhingmasscharactermod.WrithingMassCharacterMod.characterPath;
 import static writhingmasscharactermod.WrithingMassCharacterMod.makeID;
@@ -105,6 +105,8 @@ public class WrithingMassCharacter extends CustomPlayer {
     private static final String SHOULDER_2 = characterPath("shoulder2.png");
     private static final String CORPSE = characterPath("corpse.png"); //Corpse is when you die.
 
+    private Texture healthBarIndicator = ImageMaster.loadImage(characterPath("indicator.png"));
+
 
     private void setCharacterScale() {
         float scale = maxHealth / 40F;
@@ -153,14 +155,17 @@ public class WrithingMassCharacter extends CustomPlayer {
         retVal.add(Strike.ID);
         retVal.add(Strike.ID);
         retVal.add(Strike.ID);
-        retVal.add(Strike.ID);
 
         retVal.add(Defend.ID);
         retVal.add(Defend.ID);
         retVal.add(Defend.ID);
+        retVal.add(Defend.ID);
 
-        retVal.add(Flagella.ID);
-        retVal.add(Spank.ID);
+        retVal.add(Morph.ID);
+        retVal.add(Implant.ID);
+
+        //retVal.add(Flagella.ID);
+        //retVal.add(Spank.ID);
 
         return retVal;
     }
@@ -169,7 +174,7 @@ public class WrithingMassCharacter extends CustomPlayer {
     public ArrayList<String> getStartingRelics() {
         ArrayList<String> retVal = new ArrayList<>();
         //IDs of starting relics. You can have multiple, but one is recommended.
-        retVal.add(MalignantTumor.ID);
+        retVal.add(Tumor.ID);
 
         return retVal;
     }
@@ -304,7 +309,72 @@ public class WrithingMassCharacter extends CustomPlayer {
     public void applyStartOfCombatLogic() {
         super.applyStartOfCombatLogic();
 
-        //this.addPower(new EndlessHungerPower(this, 1, 3));
+        List<AbstractCard> allCards = new ArrayList<>();
+        allCards.addAll(this.hand.group);
+        allCards.addAll(this.discardPile.group);
+        allCards.addAll(this.drawPile.group);
+        allCards.addAll(this.exhaustPile.group);
+        allCards = allCards.stream()
+                .filter(card -> card instanceof WrithingCard)
+                .collect(Collectors.toList());
+        List<WrithingCard> mutableCards = new ArrayList<>();
+        for (AbstractCard card : allCards) {
+            if (((WrithingCard)card).isMutable) {
+                mutableCards.add((WrithingCard) card);
+            }
+        }
+
+        for (int i = 0; i < mutableCards.size(); i++) {
+            if (AbstractDungeon.cardRandomRng.random() < 0.5F) {
+                mutableCards.get(i).setBenign(false);
+            }
+        }
+
+        /*Collections.shuffle(mutableCards, AbstractDungeon.cardRandomRng.random);
+        int halfSize = mutableCards.size() / 2;
+        for (int i = 0; i < halfSize; i++) {
+            mutableCards.get(i).setBenign(false);
+        }*/
+    }
+
+    @Override
+    public void useCard(AbstractCard c, AbstractMonster monster, int energyOnUse) {
+        super.useCard(c, monster, energyOnUse);
+
+        if (c instanceof WrithingCard) {
+            if (((WrithingCard)c).isMutable) {
+                for (AbstractCard card : this.hand.group) {
+                    if (card instanceof WrithingCard) {
+                        if (((WrithingCard)card).isMutable) {
+                            ((WrithingCard)card).toggleBenign();
+                        }
+                    }
+                }
+                for (AbstractCard card : this.discardPile.group) {
+                    if (card instanceof WrithingCard) {
+                        if (((WrithingCard)card).isMutable) {
+                            ((WrithingCard)card).toggleBenign();
+                        }
+                    }
+                }
+                for (AbstractCard card : this.drawPile.group) {
+                    if (card instanceof WrithingCard) {
+                        if (((WrithingCard)card).isMutable) {
+                            ((WrithingCard)card).toggleBenign();
+                        }
+                    }
+                }
+                for (AbstractCard card : this.exhaustPile.group) {
+                    if (card instanceof WrithingCard) {
+                        if (((WrithingCard)card).isMutable) {
+                            ((WrithingCard)card).toggleBenign();
+                        }
+                    }
+                }
+            }
+        }
+
+
     }
 
     @Override
@@ -354,9 +424,9 @@ public class WrithingMassCharacter extends CustomPlayer {
             float iconY = y - HEALTH_BG_OFFSET_X + 3.0F * Settings.scale - (HEALTH_BAR_HEIGHT * 0.4F);
 
             sb.setColor(Color.MAGENTA);
-            sb.draw(ImageMaster.loadImage(characterPath("indicator.png")), leftX + (rightX - leftX) / 3, iconY, HEALTH_BAR_HEIGHT, iconHeight);
+            sb.draw(healthBarIndicator, leftX + (rightX - leftX) / 3, iconY, HEALTH_BAR_HEIGHT, iconHeight);
             sb.setColor(Color.GREEN);
-            sb.draw(ImageMaster.loadImage(characterPath("indicator.png")), leftX + 2 * (rightX - leftX) / 3, iconY, HEALTH_BAR_HEIGHT, iconHeight);
+            sb.draw(healthBarIndicator, leftX + 2 * (rightX - leftX) / 3, iconY, HEALTH_BAR_HEIGHT, iconHeight);
         }
 
         super.renderHealth(sb);

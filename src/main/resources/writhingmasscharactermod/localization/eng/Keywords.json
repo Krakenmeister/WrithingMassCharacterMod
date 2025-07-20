@@ -112,5 +112,33 @@
       "malleable"
     ],
     "DESCRIPTION": "Upon receiving attack damage, gains block. Increases block gained with consecutive attacks."
+  },
+  {
+    "PROPER_NAME": "Mutable",
+    "NAMES": [
+      "mutable"
+    ],
+    "DESCRIPTION": "This card will flip between positive #y(Benign) and negative #y(Malignant) versions when you play any mutable card. #yMutation is chosen randomly at the start of combat."
+  },
+  {
+    "PROPER_NAME": "Mutate",
+    "NAMES": [
+      "mutate"
+    ],
+    "DESCRIPTION": "Toggle between a #yMutable card's #yBenign and #yMalignant versions."
+  },
+  {
+    "PROPER_NAME": "Inert",
+    "NAMES": [
+      "inert"
+    ],
+    "DESCRIPTION": "This card cannot be #yInfested"
+  },
+  {
+    "PROPER_NAME": "Infest",
+    "NAMES": [
+      "infest"
+    ],
+    "DESCRIPTION": "Give cards to enemies. Enemies will play ALL #yInfested cards at the end of their turn. Enemies can hold more #yInfested cards the more Max HP they have. Once capacity is reached, the oldest #yInfested card will return to hand."
   }
 ]

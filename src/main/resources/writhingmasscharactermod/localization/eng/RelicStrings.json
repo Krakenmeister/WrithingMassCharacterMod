@@ -6,8 +6,8 @@
       "Gain [E] at the start of your turn. [E] is an energy icon."
     ]
   },
-  "${modID}:MalignantTumor": {
-    "NAME": "Malignant Tumor",
+  "${modID}:Tumor": {
+    "NAME": "Tumor",
     "FLAVOR": "Don't forget your prostate cancer checkup.",
     "DESCRIPTIONS": [
       "Start each combat with #b",
