@@ -64,12 +64,6 @@ public class RenderInfestCardsPatch {
                 infestedCard.hb.move(pos.x, pos.y);
                 infestedCard.hb.update();
 
-                if (infestedCard.shouldFlash) {
-                    System.out.println("IM FLASHING");
-                    infestedCard.flash(Color.YELLOW);
-                    infestedCard.shouldFlash = false;
-                }
-
                 if (infestedCard.hb.hovered) {
                     infestedCard.drawScale = 1.0f;
                     infestedCard.lighten(true);

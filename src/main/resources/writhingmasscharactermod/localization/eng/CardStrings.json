@@ -141,7 +141,10 @@
   },
   "${modID}:Bloat": {
     "NAME": "Bloat",
-    "DESCRIPTION": "Gain !B! Block. NL If in ${modID}:Molt_Form, gain !B! Block again."
+    "DESCRIPTION": "${modID}:Mutable. NL Gain !B! Block. NL If in ${modID}:Molt_Form, gain !B! Block again.",
+    "EXTENDED_DESCRIPTION": [
+      "${modID}:Mutable. NL Lose !B! Block. NL If in ${modID}:Molt_Form, lose !B! Block again."
+    ]
   },
   "${modID}:Deluge": {
     "NAME": "Deluge",

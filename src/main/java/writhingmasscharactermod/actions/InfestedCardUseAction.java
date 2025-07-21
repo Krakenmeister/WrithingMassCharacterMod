@@ -13,12 +13,13 @@ import writhingmasscharactermod.util.WrithingCard;
 public class InfestedCardUseAction extends AbstractGameAction {
     private WrithingCard card;
     private boolean triggered = false;
+    private static final float ACTION_DURATION = Settings.ACTION_DUR_LONG;
 
     public InfestedCardUseAction(AbstractMonster m, WrithingCard c) {
         this.source = m;
         this.target = AbstractDungeon.player;
         this.card = c;
-        this.duration = Settings.ACTION_DUR_LONG;
+        this.duration = ACTION_DURATION;
         this.actionType = ActionType.WAIT;
     }
 
@@ -26,12 +27,17 @@ public class InfestedCardUseAction extends AbstractGameAction {
         if (!triggered) {
             triggered = true;
 
-            card.flash(Color.YELLOW);
-            card.shouldFlash = true;
-
             card.writhingUse(source, target);
 
-            AbstractDungeon.effectsQueue.add(new ShowCardBrieflyEffect(card.makeStatEquivalentCopy()));
+            float centerX = Settings.WIDTH / 2.0F;
+            float centerY = Settings.HEIGHT / 2.0F;
+
+            float range = 300.0F * Settings.scale;
+
+            float offsetX = AbstractDungeon.cardRandomRng.random(-range, range);
+            float offsetY = AbstractDungeon.cardRandomRng.random(-range, range);
+
+            AbstractDungeon.effectsQueue.add(new ShowCardBrieflyEffect(card.makeStatEquivalentCopy(), centerX + offsetX, centerY + offsetY));
         }
 
         tickDuration();

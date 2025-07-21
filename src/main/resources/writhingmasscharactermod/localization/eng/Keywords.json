@@ -118,7 +118,7 @@
     "NAMES": [
       "mutable"
     ],
-    "DESCRIPTION": "This card will flip between positive #y(Benign) and negative #y(Malignant) versions when you play any mutable card. #yMutation is chosen randomly at the start of combat."
+    "DESCRIPTION": "When played, #yMutate ALL #yMutable cards in deck. When #yMutated, #yMutable cards will toggle between positive #y(Benign) and negative #y(Malignant) versions. Mutation is chosen randomly at the start of combat."
   },
   {
     "PROPER_NAME": "Mutate",

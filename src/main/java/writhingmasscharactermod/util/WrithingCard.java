@@ -17,8 +17,6 @@ public abstract class WrithingCard extends BaseCard {
     public boolean isMutable = false;
     public boolean isInert = false;
 
-    public boolean shouldFlash = true;
-
     public AbstractCreature owner = AbstractDungeon.player;
 
     public WrithingCard(String ID, CardStats info, boolean isBenign) {

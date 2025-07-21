@@ -1,8 +1,10 @@
 package writhingmasscharactermod.cards.common;
 
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.utility.LoseBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import writhingmasscharactermod.cards.BaseCard;
@@ -12,8 +14,9 @@ import writhingmasscharactermod.forms.HighForm;
 import writhingmasscharactermod.patches.FormFieldPatch;
 import writhingmasscharactermod.util.CardStats;
 import writhingmasscharactermod.util.FormChangeTrigger;
+import writhingmasscharactermod.util.WrithingCard;
 
-public class Bloat extends BaseCard implements FormChangeTrigger {
+public class Bloat extends WrithingCard implements FormChangeTrigger {
     public static final String ID = makeID("Bloat");
     private static final CardStats info = new CardStats(
             WrithingMassCharacter.Meta.CARD_COLOR,
@@ -27,16 +30,44 @@ public class Bloat extends BaseCard implements FormChangeTrigger {
     private static final int UPG_BLOCK = 3;
 
     public Bloat() {
-        super(ID, info);
+        this(true, true);
+    }
+
+    public Bloat(boolean isBenign, boolean previewCards) {
+        super(ID, info, isBenign);
+
+        setBenign(isBenign);
+        setMutable(true);
+
+        if (previewCards) {
+            cardsToPreview = new Bloat(!isBenign, false);
+        }
 
         setBlock(BLOCK, UPG_BLOCK);
     }
 
     @Override
-    public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new GainBlockAction(p, p, block));
-        if (FormFieldPatch.form.get(p).ID.equals(HighForm.FORM_ID)) {
-            addToBot(new GainBlockAction(p, p, block));
+    protected String updateCardText(boolean isBenign) {
+        if (isBenign) {
+            return cardStrings.DESCRIPTION;
+        } else {
+            return cardStrings.EXTENDED_DESCRIPTION[0];
+        }
+    }
+
+    @Override
+    public void benignUse(AbstractCreature source, AbstractCreature target) {
+        addToBot(new GainBlockAction(source, source, block));
+        if (FormFieldPatch.form.get(AbstractDungeon.player).ID.equals(HighForm.FORM_ID)) {
+            addToBot(new GainBlockAction(source, source, block));
+        }
+    }
+
+    @Override
+    public void malignantUse(AbstractCreature source, AbstractCreature target) {
+        addToBot(new LoseBlockAction(source, source, block));
+        if (FormFieldPatch.form.get(AbstractDungeon.player).ID.equals(HighForm.FORM_ID)) {
+            addToBot(new LoseBlockAction(source, source, block));
         }
     }
 
