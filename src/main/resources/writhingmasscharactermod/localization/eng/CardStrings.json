@@ -50,7 +50,10 @@
   },
   "${modID}:Debauchery": {
     "NAME": "Debauchery",
-    "DESCRIPTION": "Take !M! damage. NL Deal !D! damage to ALL enemies."
+    "DESCRIPTION": "${modID}:Mutable. NL Deal !D! damage to EVERYONE. NL Gain !M! HP.",
+    "EXTENDED_DESCRIPTION": [
+      "${modID}:Mutable. NL Deal !D! damage to EVERYONE. NL Lose !M! HP."
+    ]
   },
   "${modID}:FinalForm": {
     "NAME": "Final Form",
@@ -70,7 +73,10 @@
   },
   "${modID}:Bloom": {
     "NAME": "Bloom",
-    "DESCRIPTION": "Take !M! damage. NL Gain !${modID}:bloomregen! Regen"
+    "DESCRIPTION": "${modID}:Mutable. NL Deal !D! damage to self. NL Gain !M! Regen.",
+    "EXTENDED_DESCRIPTION": [
+      "${modID}:Mutable. NL Deal !D! damage. NL Gain !M! Poison."
+    ]
   },
   "${modID}:MassDestruction": {
     "NAME": "Mass Destruction",

@@ -30,10 +30,11 @@ public class InfestedCardUseAction extends AbstractGameAction {
             float centerX = Settings.WIDTH / 2.0F;
             float centerY = Settings.HEIGHT / 2.0F;
 
-            float range = 300.0F * Settings.scale;
+            float verticalRange = 150.0F * Settings.scale;
+            float horizontalRange = 400.0F * Settings.scale;
 
-            float offsetX = AbstractDungeon.cardRandomRng.random(-range, range);
-            float offsetY = AbstractDungeon.cardRandomRng.random(-range, range);
+            float offsetX = AbstractDungeon.cardRandomRng.random(-horizontalRange, horizontalRange);
+            float offsetY = AbstractDungeon.cardRandomRng.random(-verticalRange, verticalRange);
 
             AbstractDungeon.effectsQueue.add(new ShowCardBrieflyEffect(card.makeStatEquivalentCopy(), centerX + offsetX, centerY + offsetY));
         }

@@ -3,6 +3,7 @@ package writhingmasscharactermod.util;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -11,6 +12,8 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import writhingmasscharactermod.cards.BaseCard;
 import writhingmasscharactermod.patches.FormFieldPatch;
+
+import java.util.ArrayList;
 
 public abstract class WrithingCard extends BaseCard {
     public boolean isBenign = true;
@@ -66,6 +69,7 @@ public abstract class WrithingCard extends BaseCard {
     }
 
     public void calculateCardDamage(AbstractCreature target) {
+        System.out.println("calculating card damage");
         this.isDamageModified = false;
         if (!this.isMultiDamage) {
             float tmp = (float)this.baseDamage;
@@ -116,6 +120,78 @@ public abstract class WrithingCard extends BaseCard {
             }
 
             this.damage = MathUtils.floor(tmp);
+        } else {
+            System.out.println("calculating multi damage");
+            ArrayList<AbstractCreature> everyone = new ArrayList<>(AbstractDungeon.getCurrRoom().monsters.monsters);
+            everyone.add(AbstractDungeon.player);
+            float[] tmp = new float[everyone.size()];
+
+            for(int i = 0; i < tmp.length; ++i) {
+                tmp[i] = (float)this.baseDamage;
+            }
+
+            for(int i = 0; i < tmp.length; ++i) {
+                if (owner instanceof AbstractPlayer) {
+                    for(AbstractRelic r : AbstractDungeon.player.relics) {
+                        tmp[i] = r.atDamageModify(tmp[i], this);
+                        if (this.baseDamage != (int)tmp[i]) {
+                            this.isDamageModified = true;
+                        }
+                    }
+                }
+
+                for(AbstractPower p : owner.powers) {
+                    tmp[i] = p.atDamageGive(tmp[i], this.damageTypeForTurn, this);
+                }
+
+                if (owner instanceof AbstractPlayer) {
+                    tmp[i] = AbstractDungeon.player.stance.atDamageGive(tmp[i], this.damageTypeForTurn, this);
+                    if (this.baseDamage != (int)tmp[i]) {
+                        this.isDamageModified = true;
+                    }
+                }
+
+            }
+
+            for(int i = 0; i < tmp.length; ++i) {
+                for(AbstractPower p : (everyone.get(i)).powers) {
+                    if (!(everyone.get(i)).isDying && !(everyone.get(i)).isEscaping) {
+                        tmp[i] = p.atDamageReceive(tmp[i], this.damageTypeForTurn, this);
+                    }
+                }
+            }
+
+            for(int i = 0; i < tmp.length; ++i) {
+                for(AbstractPower p : owner.powers) {
+                    tmp[i] = p.atDamageFinalGive(tmp[i], this.damageTypeForTurn, this);
+                }
+            }
+
+            for(int i = 0; i < tmp.length; ++i) {
+                for(AbstractPower p : (everyone.get(i)).powers) {
+                    if (!(everyone.get(i)).isDying && !(everyone.get(i)).isEscaping) {
+                        tmp[i] = p.atDamageFinalReceive(tmp[i], this.damageTypeForTurn, this);
+                    }
+                }
+            }
+
+            for(int i = 0; i < tmp.length; ++i) {
+                if (tmp[i] < 0.0F) {
+                    tmp[i] = 0.0F;
+                }
+            }
+
+            this.multiDamage = new int[tmp.length];
+
+            for(int i = 0; i < tmp.length; ++i) {
+                if (this.baseDamage != MathUtils.floor(tmp[i])) {
+                    this.isDamageModified = true;
+                }
+
+                this.multiDamage[i] = MathUtils.floor(tmp[i]);
+            }
+
+            this.damage = this.multiDamage[0];
         }
     }
 
