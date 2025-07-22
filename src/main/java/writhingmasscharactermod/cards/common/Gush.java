@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import writhingmasscharactermod.cards.BaseCard;
@@ -15,46 +16,88 @@ import writhingmasscharactermod.forms.HighForm;
 import writhingmasscharactermod.patches.FormFieldPatch;
 import writhingmasscharactermod.util.CardStats;
 import writhingmasscharactermod.util.GeneralUtils;
+import writhingmasscharactermod.util.WrithingCard;
 
-public class Gush extends BaseCard {
+public class Gush extends WrithingCard {
     public static final String ID = makeID("Gush");
     private static final CardStats info = new CardStats(
             WrithingMassCharacter.Meta.CARD_COLOR,
-            AbstractCard.CardType.SKILL,
+            AbstractCard.CardType.ATTACK,
             AbstractCard.CardRarity.COMMON,
-            CardTarget.NONE,
-            0
+            CardTarget.ENEMY,
+            1
     );
 
-    private static final int MAGIC_NUMBER = 4;
+    private static final int DAMAGE = 6;
+    private static final int UPG_DAMAGE = 3;
 
-    private static final int GUSH_DRAW = 2;
-    private static final int UPG_GUSH_DRAW = 1;
+    private static final int MAGIC_NUMBER = 2;
+    private static final int UPG_MAGIC_NUMBER = 0;
 
     public Gush() {
-        super(ID, info);
+        this(true, true);
+    }
 
-        setMagic(MAGIC_NUMBER);
-        setCustomVar("gushdraw", GUSH_DRAW, UPG_GUSH_DRAW);
+    public Gush(boolean isBenign, boolean previewCards) {
+        super(ID, info, isBenign);
+
+        setBenign(isBenign);
+        setMutable(true);
+
+        if (previewCards) {
+            cardsToPreview = new Gush(!isBenign, false);
+        }
+
+        setDamage(DAMAGE, UPG_DAMAGE);
+        setMagic(MAGIC_NUMBER, UPG_MAGIC_NUMBER);
     }
 
     @Override
-    public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DamageAction(p, new DamageInfo(p, magicNumber, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
-        addToBot(new DrawCardAction(customVar("gushdraw")));
+    public void setBenign(boolean isBenign) {
+        super.setBenign(isBenign);
+
+        if (isBenign) {
+            this.target = CardTarget.ENEMY;
+        } else {
+            this.target = CardTarget.SELF;
+        }
     }
 
     @Override
-    public void applyPowers() {
-        super.applyPowers();
-        magicNumber = GeneralUtils.applyDamageCalculations(AbstractDungeon.player, DamageInfo.DamageType.NORMAL, baseMagicNumber);
-        isMagicNumberModified = (magicNumber != baseMagicNumber);
+    protected String updateCardText(boolean isBenign) {
+        if (isBenign) {
+            return cardStrings.DESCRIPTION;
+        } else {
+            return cardStrings.EXTENDED_DESCRIPTION[0];
+        }
     }
 
     @Override
-    public void calculateCardDamage(AbstractMonster mo) {
-        super.calculateCardDamage(mo);
-        magicNumber = GeneralUtils.applyDamageCalculations(AbstractDungeon.player, DamageInfo.DamageType.NORMAL, baseMagicNumber);
-        isMagicNumberModified = (magicNumber != baseMagicNumber);
+    public void calculateCardDamage(AbstractMonster m) {
+        if (!isBenign) {
+            calculateCardDamage(owner);
+        } else {
+            if (owner instanceof AbstractPlayer) {
+                calculateCardDamage((AbstractCreature) m);
+            } else {
+                calculateCardDamage(AbstractDungeon.player);
+            }
+        }
+    }
+
+    @Override
+    public void benignUse(AbstractCreature source, AbstractCreature target) {
+        addToBot(new DamageAction(target, new DamageInfo(source, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
+        if (owner instanceof AbstractPlayer) {
+            addToBot(new DrawCardAction(magicNumber));
+        }
+    }
+
+    @Override
+    public void malignantUse(AbstractCreature source, AbstractCreature target) {
+        addToBot(new DamageAction(source, new DamageInfo(source, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+        if (owner instanceof AbstractPlayer) {
+            addToBot(new DrawCardAction(magicNumber));
+        }
     }
 }

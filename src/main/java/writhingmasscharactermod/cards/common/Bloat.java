@@ -58,7 +58,7 @@ public class Bloat extends WrithingCard implements FormChangeTrigger {
     @Override
     public void benignUse(AbstractCreature source, AbstractCreature target) {
         addToBot(new GainBlockAction(source, source, block));
-        if (FormFieldPatch.form.get(AbstractDungeon.player).ID.equals(HighForm.FORM_ID)) {
+        if ((FormFieldPatch.form.get(AbstractDungeon.player).ID.equals(HighForm.FORM_ID) && owner instanceof AbstractPlayer) || (owner.currentHealth / owner.maxHealth > 2 / 3)) {
             addToBot(new GainBlockAction(source, source, block));
         }
     }
@@ -66,7 +66,7 @@ public class Bloat extends WrithingCard implements FormChangeTrigger {
     @Override
     public void malignantUse(AbstractCreature source, AbstractCreature target) {
         addToBot(new LoseBlockAction(source, source, block));
-        if (FormFieldPatch.form.get(AbstractDungeon.player).ID.equals(HighForm.FORM_ID)) {
+        if ((FormFieldPatch.form.get(AbstractDungeon.player).ID.equals(HighForm.FORM_ID) && owner instanceof AbstractPlayer) || (owner.currentHealth / owner.maxHealth > 2 / 3)) {
             addToBot(new LoseBlockAction(source, source, block));
         }
     }
@@ -74,7 +74,7 @@ public class Bloat extends WrithingCard implements FormChangeTrigger {
     public void triggerOnGlowCheck() {
         this.glowColor = AbstractCard.BLUE_BORDER_GLOW_COLOR.cpy();
 
-        if (FormFieldPatch.form.get(AbstractDungeon.player).ID.equals(HighForm.FORM_ID)) {
+        if ((FormFieldPatch.form.get(AbstractDungeon.player).ID.equals(HighForm.FORM_ID) && owner instanceof AbstractPlayer) || (owner.currentHealth / owner.maxHealth > 2 / 3)) {
             this.glowColor = AbstractCard.GOLD_BORDER_GLOW_COLOR.cpy();
         }
     }

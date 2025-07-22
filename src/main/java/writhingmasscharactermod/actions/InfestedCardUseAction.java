@@ -2,6 +2,7 @@ package writhingmasscharactermod.actions;
 
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -36,7 +37,9 @@ public class InfestedCardUseAction extends AbstractGameAction {
             float offsetX = AbstractDungeon.cardRandomRng.random(-horizontalRange, horizontalRange);
             float offsetY = AbstractDungeon.cardRandomRng.random(-verticalRange, verticalRange);
 
-            AbstractDungeon.effectsQueue.add(new ShowCardBrieflyEffect(card.makeStatEquivalentCopy(), centerX + offsetX, centerY + offsetY));
+            AbstractCard copy = card.makeStatEquivalentCopy();
+            copy.calculateCardDamage(null);
+            AbstractDungeon.effectsQueue.add(new ShowCardBrieflyEffect(copy, centerX + offsetX, centerY + offsetY));
         }
 
         tickDuration();

@@ -56,12 +56,16 @@ public class Aftercare extends WrithingCard {
     @Override
     public void benignUse(AbstractCreature source, AbstractCreature target) {
         addToBot(new HealAction(source, source, magicNumber));
-        addToBot(new DrawCardAction(1));
+        if (owner instanceof AbstractPlayer) {
+            addToBot(new DrawCardAction(1));
+        }
     }
 
     @Override
     public void malignantUse(AbstractCreature source, AbstractCreature target) {
         addToBot(new LoseHPAction(source, source, magicNumber));
-        addToBot(new DrawCardAction(1));
+        if (owner instanceof AbstractPlayer) {
+            addToBot(new DrawCardAction(1));
+        }
     }
 }

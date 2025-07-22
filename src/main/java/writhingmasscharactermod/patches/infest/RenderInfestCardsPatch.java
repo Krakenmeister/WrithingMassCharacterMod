@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.Hitbox;
@@ -46,6 +47,17 @@ public class RenderInfestCardsPatch {
                     cardPositions.add(new Vector2f(__instance.hb.cX - (cardWidth * 2 / 3), __instance.hb.cY + (__instance.hb.height / 2.0F) + (150.0F * Settings.scale)));
                     cardPositions.add(new Vector2f(__instance.hb.cX + (cardWidth * 2 / 3), __instance.hb.cY + (__instance.hb.height / 2.0F) + (150.0F * Settings.scale)));
                     break;
+                case 3:
+                    cardPositions.add(new Vector2f(__instance.hb.cX - (cardWidth * 4 / 3), __instance.hb.cY + (__instance.hb.height / 2.0F) + (150.0F * Settings.scale)));
+                    cardPositions.add(new Vector2f(__instance.hb.cX, __instance.hb.cY + (__instance.hb.height / 2.0F) + (150.0F * Settings.scale)));
+                    cardPositions.add(new Vector2f(__instance.hb.cX + (cardWidth * 4 / 3), __instance.hb.cY + (__instance.hb.height / 2.0F) + (150.0F * Settings.scale)));
+                    break;
+                case 4:
+                    cardPositions.add(new Vector2f(__instance.hb.cX - (cardWidth * 2), __instance.hb.cY + (__instance.hb.height / 2.0F) + (150.0F * Settings.scale)));
+                    cardPositions.add(new Vector2f(__instance.hb.cX - (cardWidth * 2 / 3), __instance.hb.cY + (__instance.hb.height / 2.0F) + (150.0F * Settings.scale)));
+                    cardPositions.add(new Vector2f(__instance.hb.cX + (cardWidth * 2 / 3), __instance.hb.cY + (__instance.hb.height / 2.0F) + (150.0F * Settings.scale)));
+                    cardPositions.add(new Vector2f(__instance.hb.cX + (cardWidth * 2), __instance.hb.cY + (__instance.hb.height / 2.0F) + (150.0F * Settings.scale)));
+                    break;
             }
 
             for (Vector2f cardPosition : cardPositions) {
@@ -75,12 +87,6 @@ public class RenderInfestCardsPatch {
                 infestedCard.calculateCardDamage(null);
                 infestedCard.render(sb);
             }
-        } else {
-            System.out.println("is dying = " + __instance.isDead);
-            System.out.println("is escaping = " + __instance.isEscaping);
-            System.out.println("curr phase = " + (AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT));
-            System.out.println("player dead = " + AbstractDungeon.player.isDead);
-            System.out.println("hide combat elements = " + Settings.hideCombatElements);
         }
     }
 

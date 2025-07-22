@@ -33,13 +33,18 @@ public class Bloodbath extends WrithingCard {
     private static final int UPG_SELF_VULNERABLE = 0;
 
     public Bloodbath() {
-        this(true);
+        this(true, true);
     }
 
-    public Bloodbath(boolean isBenign) {
+    public Bloodbath(boolean isBenign, boolean previewCards) {
         super(ID, info, isBenign);
 
         setBenign(isBenign);
+        setMutable(true);
+
+        if (previewCards) {
+            cardsToPreview = new Bloodbath(!isBenign, false);
+        }
 
         setMagic(MAGIC_NUMBER, UPG_MAGIC_NUMBER);
 
@@ -48,7 +53,11 @@ public class Bloodbath extends WrithingCard {
 
     @Override
     protected String updateCardText(boolean isBenign) {
-        return cardStrings.DESCRIPTION;
+        if (isBenign) {
+            return cardStrings.DESCRIPTION;
+        } else {
+            return cardStrings.EXTENDED_DESCRIPTION[0];
+        }
     }
 
     @Override
@@ -68,6 +77,16 @@ public class Bloodbath extends WrithingCard {
 
     @Override
     public void malignantUse(AbstractCreature source, AbstractCreature target) {
-        benignUse(source, target);
+        if (owner instanceof AbstractPlayer) {
+            for(AbstractMonster monster : AbstractDungeon.getMonsters().monsters) {
+                if (!monster.isDead && !monster.isDying) {
+                    addToBot(new ApplyPowerAction(monster, source, new VulnerablePower(source, customVar("selfvulnerable"), false)));
+                }
+            }
+        } else {
+            addToBot(new ApplyPowerAction(AbstractDungeon.player, source, new VulnerablePower(AbstractDungeon.player, customVar("selfvulnerable"), false)));
+        }
+
+        addToBot(new ApplyPowerAction(source, source, new BleedPower(source, this.magicNumber), this.magicNumber));
     }
 }

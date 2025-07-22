@@ -85,4 +85,17 @@ public class Bloom extends WrithingCard {
             this.target = CardTarget.SELF_AND_ENEMY;
         }
     }
+
+    @Override
+    public void calculateCardDamage(AbstractMonster m) {
+        if (isBenign) {
+            calculateCardDamage(owner);
+        } else {
+            if (owner instanceof AbstractPlayer) {
+                calculateCardDamage((AbstractCreature) m);
+            } else {
+                calculateCardDamage(AbstractDungeon.player);
+            }
+        }
+    }
 }

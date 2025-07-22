@@ -78,4 +78,9 @@ public class Debauchery extends WrithingCard {
 
         addToBot(new LoseHPAction(source, source, magicNumber));
     }
+
+    @Override
+    public void calculateCardDamage(AbstractMonster m) {
+        calculateCardDamage((AbstractCreature) m);
+    }
 }
