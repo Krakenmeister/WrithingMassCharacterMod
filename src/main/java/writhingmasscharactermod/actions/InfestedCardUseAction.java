@@ -2,11 +2,14 @@ package writhingmasscharactermod.actions;
 
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.vfx.cardManip.ExhaustCardEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
+import writhingmasscharactermod.util.InfestUtils;
 import writhingmasscharactermod.util.WrithingCard;
 
 public class InfestedCardUseAction extends AbstractGameAction {
@@ -27,6 +30,10 @@ public class InfestedCardUseAction extends AbstractGameAction {
             triggered = true;
 
             card.writhingUse(source, target);
+
+            if (card.exhaust) {
+                InfestUtils.ExhaustInfestedCard((AbstractMonster) source, card);
+            }
 
             float centerX = Settings.WIDTH / 2.0F;
             float centerY = Settings.HEIGHT / 2.0F;

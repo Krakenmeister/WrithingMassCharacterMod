@@ -5,13 +5,15 @@ import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import writhingmasscharactermod.actions.CopyDiscardPileToHandAction;
 import writhingmasscharactermod.cards.BaseCard;
 import writhingmasscharactermod.character.WrithingMassCharacter;
 import writhingmasscharactermod.util.CardStats;
+import writhingmasscharactermod.util.WrithingCard;
 
-public class UnceasingBottom extends BaseCard {
+public class UnceasingBottom extends WrithingCard {
     public static final String ID = makeID("UnceasingBottom");
     private static final CardStats info = new CardStats(
             WrithingMassCharacter.Meta.CARD_COLOR,
@@ -25,7 +27,13 @@ public class UnceasingBottom extends BaseCard {
     private static final int UPG_DAMAGE = 2;
 
     public UnceasingBottom() {
-        super(ID, info);
+        this(true);
+    }
+
+    public UnceasingBottom(boolean isBenign) {
+        super(ID, info, true);
+
+        setBenign(isBenign);
 
         setDamage(DAMAGE, UPG_DAMAGE);
 
@@ -33,8 +41,20 @@ public class UnceasingBottom extends BaseCard {
     }
 
     @Override
-    public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-        addToBot(new CopyDiscardPileToHandAction());
+    protected String updateCardText(boolean isBenign) {
+        return cardStrings.DESCRIPTION;
+    }
+
+    @Override
+    public void benignUse(AbstractCreature source, AbstractCreature target) {
+        addToBot(new DamageAction(target, new DamageInfo(source, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
+        if (owner instanceof AbstractPlayer) {
+            addToBot(new CopyDiscardPileToHandAction());
+        }
+    }
+
+    @Override
+    public void malignantUse(AbstractCreature source, AbstractCreature target) {
+        benignUse(source, target);
     }
 }

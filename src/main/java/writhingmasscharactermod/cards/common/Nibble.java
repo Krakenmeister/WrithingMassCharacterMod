@@ -5,53 +5,90 @@ import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import writhingmasscharactermod.actions.IncreasePlayerMaxHpAction;
-import writhingmasscharactermod.cards.BaseCard;
+import writhingmasscharactermod.actions.DecreaseMaxHpAction;
+import writhingmasscharactermod.actions.IncreaseFlatMaxHpAction;
 import writhingmasscharactermod.character.WrithingMassCharacter;
 import writhingmasscharactermod.util.CardStats;
-import writhingmasscharactermod.util.GeneralUtils;
+import writhingmasscharactermod.util.WrithingCard;
 
-public class Nibble extends BaseCard {
+public class Nibble extends WrithingCard {
     public static final String ID = makeID("Nibble");
     private static final CardStats info = new CardStats(
             WrithingMassCharacter.Meta.CARD_COLOR,
-            AbstractCard.CardType.SKILL,
+            CardType.ATTACK,
             AbstractCard.CardRarity.COMMON,
             AbstractCard.CardTarget.SELF,
             1
     );
 
+    private static final int DAMAGE = 1;
     private static final int MAGIC_NUMBER = 1;
-    private static final int NIBBLE_GAIN = 1;
 
     public Nibble() {
-        super(ID, info);
+        this(true, true);
+    }
 
+    public Nibble(boolean isBenign, boolean previewCards) {
+        super(ID, info, isBenign);
+
+        setBenign(isBenign);
+        setMutable(true);
+
+        if (previewCards) {
+            cardsToPreview = new Nibble(!isBenign, false);
+        }
+
+        setDamage(DAMAGE);
         setMagic(MAGIC_NUMBER);
-        setCustomVar("nibblegain", NIBBLE_GAIN);
         setCostUpgrade(0);
         setExhaust(true);
     }
 
     @Override
-    public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DamageAction(p, new DamageInfo(p, magicNumber, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
-        addToBot(new IncreasePlayerMaxHpAction(p, customVar("nibblegain"), true));
+    public void calculateCardDamage(AbstractMonster m) {
+        if (isBenign) {
+            calculateCardDamage(owner);
+        } else {
+            if (owner instanceof AbstractPlayer) {
+                calculateCardDamage((AbstractCreature) m);
+            } else {
+                calculateCardDamage(AbstractDungeon.player);
+            }
+        }
     }
 
     @Override
-    public void applyPowers() {
-        super.applyPowers();
-        magicNumber = GeneralUtils.applyDamageCalculations(AbstractDungeon.player, DamageInfo.DamageType.NORMAL, baseMagicNumber);
-        isMagicNumberModified = (magicNumber != baseMagicNumber);
+    protected String updateCardText(boolean isBenign) {
+        if (isBenign) {
+            return cardStrings.DESCRIPTION;
+        } else {
+            return cardStrings.EXTENDED_DESCRIPTION[0];
+        }
     }
 
     @Override
-    public void calculateCardDamage(AbstractMonster mo) {
-        super.calculateCardDamage(mo);
-        magicNumber = GeneralUtils.applyDamageCalculations(AbstractDungeon.player, DamageInfo.DamageType.NORMAL, baseMagicNumber);
-        isMagicNumberModified = (magicNumber != baseMagicNumber);
+    public void benignUse(AbstractCreature source, AbstractCreature target) {
+        addToBot(new DamageAction(source, new DamageInfo(source, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+        addToBot(new IncreaseFlatMaxHpAction(source, magicNumber, true));
+    }
+
+    @Override
+    public void malignantUse(AbstractCreature source, AbstractCreature target) {
+        addToBot(new DamageAction(target, new DamageInfo(source, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
+        addToBot(new DecreaseMaxHpAction(source, magicNumber));
+    }
+
+    @Override
+    public void setBenign(boolean isBenign) {
+        super.setBenign(isBenign);
+
+        if (isBenign) {
+            this.target = CardTarget.SELF;
+        } else {
+            this.target = CardTarget.SELF_AND_ENEMY;
+        }
     }
 }

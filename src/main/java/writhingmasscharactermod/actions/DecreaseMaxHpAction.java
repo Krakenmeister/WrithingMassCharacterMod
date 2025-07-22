@@ -1,16 +1,13 @@
 package writhingmasscharactermod.actions;
 
-import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.Settings;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class IncreasePlayerMaxHpAction extends AbstractGameAction {
-    private final boolean showEffect;
+public class DecreaseMaxHpAction extends AbstractGameAction {
     private final int amount;
 
-    public IncreasePlayerMaxHpAction(AbstractPlayer p, int amount, boolean showEffect) {
+    public DecreaseMaxHpAction(AbstractCreature creature, int amount) {
         if (Settings.FAST_MODE) {
             this.startDuration = Settings.ACTION_DUR_XFAST;
         } else {
@@ -18,14 +15,13 @@ public class IncreasePlayerMaxHpAction extends AbstractGameAction {
         }
 
         this.duration = this.startDuration;
-        this.showEffect = showEffect;
         this.amount = amount;
-        this.target = p;
+        this.target = creature;
     }
 
     public void update() {
         if (this.duration == this.startDuration) {
-            this.target.increaseMaxHp(amount, this.showEffect);
+            this.target.decreaseMaxHealth(amount);
         }
 
         this.tickDuration();

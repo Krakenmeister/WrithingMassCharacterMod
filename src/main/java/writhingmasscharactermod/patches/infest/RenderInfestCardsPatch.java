@@ -34,31 +34,9 @@ public class RenderInfestCardsPatch {
     public static void Insert(AbstractMonster __instance, SpriteBatch sb) {
         if (!__instance.isDying && !__instance.isEscaping && AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT && !AbstractDungeon.player.isDead && !Settings.hideCombatElements) {
             // Render slots
-            List<Vector2f> cardPositions = new ArrayList<>();
-            int capacity = InfestUtils.GetInfestCapacity(__instance.maxHealth);
-            float cardWidth = 100F * Settings.scale;
-            float cardHeight = 139F * Settings.scale;
-
-            switch(capacity) {
-                case 1:
-                    cardPositions.add(new Vector2f(__instance.hb.cX, __instance.hb.cY + (__instance.hb.height / 2.0F) + (150.0F * Settings.scale)));
-                    break;
-                case 2:
-                    cardPositions.add(new Vector2f(__instance.hb.cX - (cardWidth * 2 / 3), __instance.hb.cY + (__instance.hb.height / 2.0F) + (150.0F * Settings.scale)));
-                    cardPositions.add(new Vector2f(__instance.hb.cX + (cardWidth * 2 / 3), __instance.hb.cY + (__instance.hb.height / 2.0F) + (150.0F * Settings.scale)));
-                    break;
-                case 3:
-                    cardPositions.add(new Vector2f(__instance.hb.cX - (cardWidth * 4 / 3), __instance.hb.cY + (__instance.hb.height / 2.0F) + (150.0F * Settings.scale)));
-                    cardPositions.add(new Vector2f(__instance.hb.cX, __instance.hb.cY + (__instance.hb.height / 2.0F) + (150.0F * Settings.scale)));
-                    cardPositions.add(new Vector2f(__instance.hb.cX + (cardWidth * 4 / 3), __instance.hb.cY + (__instance.hb.height / 2.0F) + (150.0F * Settings.scale)));
-                    break;
-                case 4:
-                    cardPositions.add(new Vector2f(__instance.hb.cX - (cardWidth * 2), __instance.hb.cY + (__instance.hb.height / 2.0F) + (150.0F * Settings.scale)));
-                    cardPositions.add(new Vector2f(__instance.hb.cX - (cardWidth * 2 / 3), __instance.hb.cY + (__instance.hb.height / 2.0F) + (150.0F * Settings.scale)));
-                    cardPositions.add(new Vector2f(__instance.hb.cX + (cardWidth * 2 / 3), __instance.hb.cY + (__instance.hb.height / 2.0F) + (150.0F * Settings.scale)));
-                    cardPositions.add(new Vector2f(__instance.hb.cX + (cardWidth * 2), __instance.hb.cY + (__instance.hb.height / 2.0F) + (150.0F * Settings.scale)));
-                    break;
-            }
+            List<Vector2f> cardPositions = InfestUtils.GetInfestedCardPositions(__instance);
+            float cardWidth = InfestUtils.GetInfestedCardWidth();
+            float cardHeight = InfestUtils.GetInfestedCardHeight();
 
             for (Vector2f cardPosition : cardPositions) {
                 sb.setColor(Color.WHITE);

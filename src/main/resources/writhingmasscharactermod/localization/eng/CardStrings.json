@@ -105,7 +105,10 @@
   },
   "${modID}:Polymorphism": {
     "NAME": "Polymorphism",
-    "DESCRIPTION": "Deal !D! damage. NL Whenever you change ${modID}:Forms, return this from the discard pile to your hand."
+    "DESCRIPTION": "${modID}:Mutable. NL Deal !D! damage. NL Whenever you change ${modID}:Forms, return this from the discard pile to your hand.",
+    "EXTENDED_DESCRIPTION": [
+      "${modID}:Mutable. NL Deal !D! damage to self. NL Whenever you change ${modID}:Forms, return this from the discard pile to your hand."
+    ]
   },
   "${modID}:Aftercare": {
     "NAME": "Aftercare",
@@ -116,7 +119,10 @@
   },
   "${modID}:Ravage": {
     "NAME": "Ravage",
-    "DESCRIPTION": "Deal !D! damage. NL Apply !M! Vulnerable."
+    "DESCRIPTION": "${modID}:Mutable. NL Deal !D! damage. NL Apply !M! Vulnerable.",
+    "EXTENDED_DESCRIPTION": [
+      "${modID}:Mutable. NL Deal !D! damage to self. NL Apply !M! Vulnerable."
+    ]
   },
   "${modID}:BarbedLeash": {
     "NAME": "Barbed Leash",
@@ -172,7 +178,10 @@
   },
   "${modID}:Nibble": {
     "NAME": "Nibble",
-    "DESCRIPTION": "Take !M! damage. NL Raise your Max HP by !${modID}:nibblegain!. NL Exhaust."
+    "DESCRIPTION": "${modID}:Mutable. NL Deal !D! damage to self. NL Gain !M! Max HP. NL Exhaust.",
+    "EXTENDED_DESCRIPTION": [
+      "${modID}:Mutable. NL Deal !D! damage. NL Lose !M! Max HP. NL Exhaust."
+    ]
   },
   "${modID}:Mitosis": {
     "NAME": "Mitosis",
@@ -194,7 +203,10 @@
   },
   "${modID}:Needle": {
     "NAME": "Needle",
-    "DESCRIPTION": "Deal !D! damage. NL Apply !M! ${modID}:Bleed."
+    "DESCRIPTION": "${modID}:Mutable. NL Deal !D! damage. NL Apply !M! ${modID}:Bleed.",
+    "EXTENDED_DESCRIPTION": [
+      "${modID}:Mutable. NL Deal !D! damage to self. NL Apply !M! ${modID}:Bleed."
+    ]
   },
   "${modID}:Exhibitionist": {
     "NAME": "Exhibitionist",
@@ -206,7 +218,10 @@
   },
   "${modID}:Slurp": {
     "NAME": "Slurp",
-    "DESCRIPTION": "Deal !D! damage. NL Gain !M! Regen."
+    "DESCRIPTION": "${modID}:Mutable. NL Deal !D! damage. NL Gain !M! Regen.",
+    "EXTENDED_DESCRIPTION": [
+      "${modID}:Mutable. NL Deal !D! damage to self. NL Gain !M! Poison."
+    ]
   },
   "${modID}:PowerBottom": {
     "NAME": "Power Bottom",
@@ -218,8 +233,12 @@
   },
   "${modID}:Kiss": {
     "NAME": "Kiss",
-    "DESCRIPTION": "Gain [E] [E] NL Enemy gains !${modID}:kissgain! Strength.",
-    "UPGRADE_DESCRIPTION": "Gain [E] [E] [E] NL Enemy gains !${modID}:kissgain! Strength."
+    "DESCRIPTION": "${modID}:Mutable. NL Gain [E] [E] NL Enemy gains !${modID}:kissgain! Strength.",
+    "UPGRADE_DESCRIPTION": "${modID}:Mutable. NL Gain [E] [E] [E] NL Enemy gains !${modID}:kissgain! Strength.",
+    "EXTENDED_DESCRIPTION": [
+      "${modID}:Mutable. NL Lose [E] [E] NL Enemy gains !${modID}:kissgain! Strength.",
+      "${modID}:Mutable. NL Lose [E] [E] [E] NL Enemy gains !${modID}:kissgain! Strength."
+    ]
   },
   "${modID}:Slough": {
     "NAME": "Slough",

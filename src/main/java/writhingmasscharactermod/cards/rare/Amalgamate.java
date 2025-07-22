@@ -2,7 +2,7 @@ package writhingmasscharactermod.cards.rare;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import writhingmasscharactermod.actions.IncreasePlayerMaxHpAction;
+import writhingmasscharactermod.actions.IncreaseFlatMaxHpAction;
 import writhingmasscharactermod.cards.BaseCard;
 import writhingmasscharactermod.character.WrithingMassCharacter;
 import writhingmasscharactermod.util.CardStats;
@@ -30,6 +30,6 @@ public class Amalgamate extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new IncreasePlayerMaxHpAction(p, magicNumber, true));
+        addToBot(new IncreaseFlatMaxHpAction(p, magicNumber, true));
     }
 }

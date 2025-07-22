@@ -69,7 +69,6 @@ public abstract class WrithingCard extends BaseCard {
     }
 
     public void calculateCardDamage(AbstractCreature target) {
-        System.out.println("calculating card damage");
         this.isDamageModified = false;
         if (!this.isMultiDamage) {
             float tmp = (float)this.baseDamage;
