@@ -25,15 +25,22 @@
   },
   "${modID}:Whip": {
     "NAME": "Whip",
-    "DESCRIPTION": "Ethereal. NL Take !M! damage. NL Deal !D! damage. NL Exhaust."
+    "DESCRIPTION": "${modID}:Mutable. NL Deal !D! damage. NL Increase the damage of ALL *Whips by !M! for the rest of combat.",
+    "EXTENDED_DESCRIPTION": [
+      "${modID}:Mutable. NL Deal !D! damage to self. NL Increase the damage of ALL *Whips by !M! for the rest of combat.",
+      " NL Exhaust."
+    ]
   },
   "${modID}:Flagella": {
     "NAME": "Flagella",
-    "DESCRIPTION": "Add !M! *Whips into your hand."
+    "DESCRIPTION": "${modID}:Infest !M! ${modID}:Malignant *Whip{@@}{!M!|1=|@=s}. NL Give {@@}{!M!|1=it|@=them} Exhaust."
   },
   "${modID}:Spank": {
     "NAME": "Spank",
-    "DESCRIPTION": "Deal !D! damage. NL Apply !M! ${modID}:Bleed."
+    "DESCRIPTION": "${modID}:Mutable. NL Deal !D! damage. NL Apply !M! ${modID}:Bleed.",
+    "EXTENDED_DESCRIPTION": [
+      "${modID}:Mutable. NL Deal !D! damage to self. NL Apply !M! ${modID}:Bleed."
+    ]
   },
   "${modID}:ReactiveStrike": {
     "NAME": "Reactive Strike",
@@ -41,8 +48,11 @@
   },
   "${modID}:Dynamic": {
     "NAME": "Dynamic",
-    "DESCRIPTION": "Whenever you lose HP, enemy loses equal HP. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Whenever you lose HP, enemy loses equal HP."
+    "DESCRIPTION": "${modID}:Inert. NL ${modID}:Mutable. NL Whenever you lose HP, enemy loses equal HP.",
+    "EXTENDED_DESCRIPTION": [
+      "${modID}:Inert. NL ${modID}:Mutable. NL Whenever enemy gains HP, you gain equal HP.",
+      " NL Exhaust."
+    ]
   },
   "${modID}:Bloodbath": {
     "NAME": "Bloodbath",
@@ -60,11 +70,17 @@
   },
   "${modID}:FinalForm": {
     "NAME": "Final Form",
-    "DESCRIPTION": "Set HP to 1. NL Gain !M! Strength."
+    "DESCRIPTION": "${modID}:Mutable. NL Set HP to 1. NL Gain !M! Strength.",
+    "EXTENDED_DESCRIPTION": [
+      "${modID}:Mutable. NL Heal to Max HP. NL Lose !M! Strength."
+    ]
   },
   "${modID}:Husk": {
     "NAME": "Husk",
-    "DESCRIPTION": "Double the enemy's ${modID}:Bleed. NL Exhaust."
+    "DESCRIPTION": "${modID}:Mutable. NL Double the enemy's ${modID}:Bleed. NL Exhaust.",
+    "EXTENDED_DESCRIPTION": [
+      "${modID}:Mutable. NL Lose ALL ${modID}:Bleed. NL Exhaust."
+    ]
   },
   "${modID}:Sadism": {
     "NAME": "Sadism",
@@ -72,7 +88,10 @@
   },
   "${modID}:Infection": {
     "NAME": "Infection",
-    "DESCRIPTION": "Apply !M! Poison. NL Add a copy of this card into your discard pile."
+    "DESCRIPTION": "${modID}:Mutable. NL Apply !M! Poison. NL Add a copy of this card into your discard pile.",
+    "EXTENDED_DESCRIPTION": [
+      "${modID}:Mutable. NL Apply !${modID}:infectionboon! Regen. NL Add a copy of this card into your discard pile."
+    ]
   },
   "${modID}:Bloom": {
     "NAME": "Bloom",
@@ -93,11 +112,16 @@
   "${modID}:Osmosis": {
     "NAME": "Osmosis",
     "DESCRIPTION": "Convert your current Block to ${modID}:Temporary_HP.",
-    "UPGRADE_DESCRIPTION": "Gain !M! Block. NL Convert your current Block to ${modID}:Temporary_HP."
+    "EXTENDED_DESCRIPTION": [
+      "Gain !M! Block. NL "
+    ]
   },
   "${modID}:FleshyAbundance": {
     "NAME": "Fleshy Abundance",
-    "DESCRIPTION": "Gain !M! HP X times."
+    "DESCRIPTION": "${modID}:Mutable. NL Gain !M! HP X times. NL Exhaust.",
+    "EXTENDED_DESCRIPTION": [
+      "${modID}:Mutable. NL Lose !M! HP X times. NL Exhaust."
+    ]
   },
   "${modID}:Laceration": {
     "NAME": "Laceration",
@@ -138,7 +162,10 @@
   },
   "${modID}:Climax": {
     "NAME": "Climax",
-    "DESCRIPTION": "Deal !D! damage !${modID}:climaxmultiplier!X times. NL Exhaust."
+    "DESCRIPTION": "${modID}:Mutable. NL Deal !D! damage !${modID}:climaxmultiplier!X times. NL Exhaust.",
+    "EXTENDED_DESCRIPTION": [
+      "${modID}:Mutable. NL Deal !D! damage to self !${modID}:climaxmultiplier!X times. NL Exhaust."
+    ]
   },
   "${modID}:UnceasingBottom": {
     "NAME": "Unceasing Bottom",
@@ -152,7 +179,10 @@
   "${modID}:Scarhide": {
     "NAME": "Scarhide",
     "DESCRIPTION": "Gain Block equal to missing HP.",
-    "UPGRADE_DESCRIPTION": " NL (Gains !B! Block.)"
+    "EXTENDED_DESCRIPTION": [
+      " NL Exhaust.",
+      " NL (Gains !B! Block.)"
+    ]
   },
   "${modID}:Bloat": {
     "NAME": "Bloat",
@@ -163,7 +193,7 @@
   },
   "${modID}:Deluge": {
     "NAME": "Deluge",
-    "DESCRIPTION": "Whenever you enter ${modID}:Froth_Form, draw !M! card{@@}{!M!|1=|@=s}."
+    "DESCRIPTION": "Whenever you change ${modID}:Forms, draw !M! card{@@}{!M!|1=|@=s}."
   },
   "${modID}:Gush": {
     "NAME": "Gush",
@@ -185,12 +215,14 @@
   },
   "${modID}:Mitosis": {
     "NAME": "Mitosis",
-    "DESCRIPTION": "Double your HP. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Double your HP. NL Double your Block. NL Exhaust."
+    "DESCRIPTION": "Double your HP. NL Exhaust."
   },
   "${modID}:Edgelord": {
     "NAME": "Edgelord",
-    "DESCRIPTION": "If in ${modID}:Moribund_Form, raise your Max HP by !M!. NL Exhaust."
+    "DESCRIPTION": "${modID}:Mutable. NL If in ${modID}:Moribund_Form, gain !M! Max HP. NL Exhaust.",
+    "EXTENDED_DESCRIPTION": [
+      "${modID}:Mutable. NL If in ${modID}:Moribund_Form, Die. NL Exhaust."
+    ]
   },
   "${modID}:Bloodrush": {
     "NAME": "Bloodrush",
@@ -199,7 +231,7 @@
   },
   "${modID}:Proboscis": {
     "NAME": "Proboscis",
-    "DESCRIPTION": "Deal !D! damage. NL Whenever this enemy loses HP, gain !M! HP. NL Exhaust."
+    "DESCRIPTION": "${modID}:Inert. NL Deal !D! damage. NL Whenever this enemy loses HP, gain !M! HP. NL Exhaust."
   },
   "${modID}:Needle": {
     "NAME": "Needle",
@@ -214,7 +246,10 @@
   },
   "${modID}:Gobble": {
     "NAME": "Gobble",
-    "DESCRIPTION": "Deal !D! damage. NL Gain ${modID}:Temporary_HP equal to unblocked damage dealt."
+    "DESCRIPTION": "${modID}:Mutable. NL Deal !D! damage. NL Gain ${modID}:Temporary_HP equal to unblocked damage dealt.",
+    "EXTENDED_DESCRIPTION": [
+      "${modID}:Mutable. NL Deal !D! damage to self. NL Gain ${modID}:Temporary_HP equal to unblocked damage dealt."
+    ]
   },
   "${modID}:Slurp": {
     "NAME": "Slurp",
@@ -225,9 +260,9 @@
   },
   "${modID}:PowerBottom": {
     "NAME": "Power Bottom",
-    "DESCRIPTION": "Deal damage equal to double the number of cards in your discard pile.",
-    "UPGRADE_DESCRIPTION": "Scry !M!. NL Deal damage equal to double the number of cards in your discard pile.",
+    "DESCRIPTION": "${modID}:Mutable. NL Scry !M!. NL Deal damage equal to double the number of cards in your discard pile.",
     "EXTENDED_DESCRIPTION": [
+      "${modID}:Mutable. NL Discard !M! card{@@}{!M!|1=|@=s}. NL Deal damage equal to double the number of cards in your discard pile.",
       " NL (Deals !D! damage.)"
     ]
   },
@@ -286,5 +321,91 @@
   "${modID}:Implant": {
     "NAME": "Implant",
     "DESCRIPTION": "${modID}:Inert NL ${modID}:Infest !M! card{@@}{!M!|1=|@=s}."
+  },
+  "${modID}:Naughty": {
+    "NAME": "Naughty",
+    "DESCRIPTION": "${modID}:Mutate up to !${modID}:naughtymutate! card{@@}{!${modID}:naughtymutate!|1=|@=s}. NL Gain !M! HP for every ${modID}:Malignant card in your hand."
+  },
+  "${modID}:Foreplay": {
+    "NAME": "Foreplay",
+    "DESCRIPTION": "${modID}:Mutable. NL Gain !${modID}:foreplaymultiplier! Vigor X + !M! times.",
+    "EXTENDED_DESCRIPTION": [
+      "${modID}:Mutable. NL Lose !${modID}:foreplaymultiplier! Vigor X + !M! times."
+    ]
+  },
+  "${modID}:Cannibalism": {
+    "NAME": "Cannibalism",
+    "DESCRIPTION": "When ${modID}:Infested cards would return to hand, they are instead played by their ${modID}:Host and sent to your Discard or Exhaust pile.",
+    "EXTENDED_DESCRIPTION": [
+      "Innate. NL "
+    ]
+  },
+  "${modID}:DanseMacabre": {
+    "NAME": "Danse Macabre",
+    "DESCRIPTION": "${modID}:Mutable. NL At the start of your turn, add !M! ${modID}:Benign *Whip{@@}{!M!|1=|@=s} into your hand. NL {@@}{!M!|1=It|@=They} Exhaust{@@}{!M!|1=s|@=}.",
+    "EXTENDED_DESCRIPTION": [
+      "Innate. NL ",
+      "${modID}:Mutable. NL At the start of your turn, add !M! ${modID}:Malignant *Whip{@@}{!M!|1=|@=s} into your hand. NL {@@}{!M!|1=It|@=They} Exhaust{@@}{!M!|1=s|@=}."
+    ]
+  },
+  "${modID}:Metastasis": {
+    "NAME": "Metastasis",
+    "DESCRIPTION": "${modID}:Mutable. NL The next {@@}{!M!|1=|@=!M!} card{@@}{!M!|1=|@=s} you play this turn {@@}{!M!|1=is|@=are} played twice.",
+    "EXTENDED_DESCRIPTION": [
+      "${modID}:Mutable. NL Exhaust !M! card{@@}{!M!|1=|@=s}."
+    ]
+  },
+  "${modID}:Antibodies": {
+    "NAME": "Antibodies",
+    "DESCRIPTION": "At the start of your turn, gain !M! ${modID}:Temporary_Buffer."
+  },
+  "${modID}:SynapticBurst": {
+    "NAME": "Synaptic Burst",
+    "DESCRIPTION": "${modID}:Inert. NL Enemy plays ALL ${modID}:Infested cards.",
+    "UPGRADE_DESCRIPTION": "${modID}:Inert. NL ALL enemies play ALL ${modID}:Infested cards."
+  },
+  "${modID}:Funishment": {
+    "NAME": "Funishment",
+    "DESCRIPTION": "${modID}:Mutable. NL Whenever this card's ${modID}:Host plays a ${modID}:Malignant card this turn, gain !M! HP.",
+    "EXTENDED_DESCRIPTION": [
+      "${modID}:Mutable. NL Whenever this card's ${modID}:Host plays a ${modID}:Malignant card this turn, heal enemy for !M! HP."
+    ]
+  },
+  "${modID}:Gestation": {
+    "NAME": "Gestation",
+    "DESCRIPTION": "When you ${modID}:Infest a card, Upgrade it."
+  },
+  "${modID}:Shapeshift": {
+    "NAME": "Shapeshift",
+    "DESCRIPTION": "Innate. NL Gain !M! ${modID}:Temporary_HP. NL ${modID}:Mutate up to !${modID}:shapeshiftmutate! card{@@}{!${modID}:shapeshiftmutate!|1=|@=s}. NL Exhaust."
+  },
+  "${modID}:IttyBitty": {
+    "NAME": "Itty Bitty",
+    "DESCRIPTION": "Gain !M! ${modID}:Temporary_HP. NL Costs 1 additional [E] for every 10 HP you have."
+  },
+  "${modID}:Putrefaction": {
+    "NAME": "Putrefaction",
+    "DESCRIPTION": "${modID}:Mutable. NL Gain ${modID}:Temporary_HP equal to the enemy's Poison{@@}{!M!|0=.|@= + !M!.}",
+    "EXTENDED_DESCRIPTION": [
+      "${modID}:Mutable. NL Gain Poison equal to the enemy's Poison{@@}{!M!|0=.|@= + !M!.}"
+    ]
+  },
+  "${modID}:Proliferate": {
+    "NAME": "Proliferate",
+    "DESCRIPTION": "Unplayable. NL When this card is ${modID}:Infested, ${modID}:Infest !M! card{@@}{!M!|1=|@=s}. NL Returns to Discard pile.",
+    "EXTENDED_DESCRIPTION": [
+      "I can't play this card."
+    ]
+  },
+  "${modID}:Brat": {
+    "NAME": "Brat",
+    "DESCRIPTION": "Gain !B! Block. NL Apply !M! Vigor."
+  },
+  "${modID}:RoundTwo": {
+    "NAME": "Round Two",
+    "DESCRIPTION": "${modID}:Mutable. NL Gain !M! HP. NL If in ${modID}:Moribund_Form, gain !${modID}:roundtwoadditional! additional HP.",
+    "EXTENDED_DESCRIPTION": [
+      "${modID}:Mutable. NL Lose !M! HP. NL If in ${modID}:Molt_Form, lose !${modID}:roundtwoadditional! additional HP."
+    ]
   }
 }

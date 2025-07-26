@@ -1,4 +1,4 @@
-package writhingmasscharactermod.cards.common;
+package writhingmasscharactermod.cards.uncommon;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -19,7 +19,7 @@ public class Nibble extends WrithingCard {
     private static final CardStats info = new CardStats(
             WrithingMassCharacter.Meta.CARD_COLOR,
             CardType.ATTACK,
-            AbstractCard.CardRarity.COMMON,
+            CardRarity.UNCOMMON,
             AbstractCard.CardTarget.SELF,
             1
     );
@@ -61,7 +61,7 @@ public class Nibble extends WrithingCard {
     }
 
     @Override
-    protected String updateCardText(boolean isBenign) {
+    public String updateCardText(boolean isBenign) {
         if (isBenign) {
             return cardStrings.DESCRIPTION;
         } else {

@@ -3,7 +3,7 @@ package writhingmasscharactermod.powers;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import writhingmasscharactermod.cards.special.Whip;
+import writhingmasscharactermod.cards.common.Whip;
 import writhingmasscharactermod.forms.AbstractForm;
 import writhingmasscharactermod.util.FormChangePower;
 

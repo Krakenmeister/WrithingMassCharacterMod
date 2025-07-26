@@ -6,9 +6,7 @@ import com.megacrit.cardcrawl.actions.unique.LoseEnergyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
-import writhingmasscharactermod.cards.BaseCard;
 import writhingmasscharactermod.character.WrithingMassCharacter;
 import writhingmasscharactermod.util.CardStats;
 import writhingmasscharactermod.util.WrithingCard;
@@ -47,7 +45,7 @@ public class Kiss extends WrithingCard {
     }
 
     @Override
-    protected String updateCardText(boolean isBenign) {
+    public String updateCardText(boolean isBenign) {
         if (isBenign) {
             if (!upgraded) {
                 return cardStrings.DESCRIPTION;

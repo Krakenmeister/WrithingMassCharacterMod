@@ -1,18 +1,20 @@
 package writhingmasscharactermod.cards.uncommon;
 
+import com.megacrit.cardcrawl.actions.common.DiscardAction;
 import com.megacrit.cardcrawl.actions.utility.ScryAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import writhingmasscharactermod.actions.PowerBottomAction;
-import writhingmasscharactermod.cards.BaseCard;
 import writhingmasscharactermod.character.WrithingMassCharacter;
 import writhingmasscharactermod.util.CardStats;
+import writhingmasscharactermod.util.WrithingCard;
 
-public class PowerBottom extends BaseCard {
+public class PowerBottom extends WrithingCard {
     private static final CardStrings cardStrings;
     public static final String ID = makeID("PowerBottom");
     private static final CardStats info = new CardStats(
@@ -23,67 +25,89 @@ public class PowerBottom extends BaseCard {
             1
     );
 
-    private static final int MAGIC_NUMBER = 0;
-    private static final int UPG_MAGIC_NUMBER = 3;
+    private static final int MAGIC_NUMBER = 2;
+    private static final int UPG_MAGIC_NUMBER = 2;
 
     public PowerBottom() {
-        super(ID, info);
+        this(true, true);
+    }
 
-        baseMagicNumber = MAGIC_NUMBER;
+    public PowerBottom(boolean isBenign, boolean previewCards) {
+        super(ID, info, isBenign);
+
+        setBenign(isBenign);
+        setMutable(true);
+
+        if (previewCards) {
+            cardsToPreview = new PowerBottom(!isBenign, false);
+        }
+
+        baseDamage = 0;
+        setMagic(MAGIC_NUMBER, UPG_MAGIC_NUMBER);
     }
 
     @Override
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void benignUse(AbstractCreature source, AbstractCreature target) {
         baseDamage = AbstractDungeon.player.discardPile.size() * 2;
-        calculateCardDamage(m);
+        calculateCardDamage(target);
 
-        if (upgraded) {
+        if (owner instanceof AbstractPlayer) {
             addToBot(new ScryAction(magicNumber));
         }
 
-        addToBot(new PowerBottomAction(p, m, this));
+        addToBot(new PowerBottomAction(source, target, this));
 
-        if (!this.upgraded) {
-            this.rawDescription = cardStrings.DESCRIPTION;
-        } else {
-            this.rawDescription = cardStrings.UPGRADE_DESCRIPTION;
-        }
-        this.initializeDescription();
+        initializeDescription();
     }
 
-    public void calculateCardDamage(AbstractMonster mo) {
-        super.calculateCardDamage(mo);
-        if (!this.upgraded) {
-            this.rawDescription = cardStrings.DESCRIPTION;
-        } else {
-            this.rawDescription = cardStrings.UPGRADE_DESCRIPTION;
+    @Override
+    public void malignantUse(AbstractCreature source, AbstractCreature target) {
+        baseDamage = AbstractDungeon.player.discardPile.size() * 2;
+        calculateCardDamage(target);
+
+        if (owner instanceof AbstractPlayer) {
+            addToBot(new DiscardAction(source, source, magicNumber, false));
         }
 
-        this.rawDescription = this.rawDescription + cardStrings.EXTENDED_DESCRIPTION[0];
-        this.initializeDescription();
+        addToBot(new PowerBottomAction(source, target, this));
+
+        initializeDescription();
+    }
+
+    @Override
+    public String updateCardText(boolean isBenign) {
+        if (isBenign) {
+            return cardStrings.DESCRIPTION;
+        } else {
+            return cardStrings.EXTENDED_DESCRIPTION[0];
+        }
+    }
+
+    @Override
+    public void calculateCardDamage(AbstractMonster m) {
+        if (owner instanceof AbstractPlayer) {
+            calculateCardDamage((AbstractCreature) m);
+        } else {
+            calculateCardDamage(AbstractDungeon.player);
+        }
+    }
+
+    public void calculateCardDamage(AbstractCreature target) {
+        baseDamage = AbstractDungeon.player.discardPile.size() * 2;
+
+        super.calculateCardDamage(target);
+
+        rawDescription = updateCardText(isBenign) + cardStrings.EXTENDED_DESCRIPTION[1];
+        initializeDescription();
     }
 
     public void applyPowers() {
         this.baseDamage = AbstractDungeon.player.discardPile.size() * 2;
 
         super.applyPowers();
-        if (!this.upgraded) {
-            this.rawDescription = cardStrings.DESCRIPTION;
-        } else {
-            this.rawDescription = cardStrings.UPGRADE_DESCRIPTION;
-        }
 
-        this.rawDescription = this.rawDescription + cardStrings.EXTENDED_DESCRIPTION[0];
-        this.initializeDescription();
-    }
-
-    public void upgrade() {
-        if (!this.upgraded) {
-            this.upgradeName();
-            this.upgradeMagicNumber(UPG_MAGIC_NUMBER);
-            this.rawDescription = cardStrings.UPGRADE_DESCRIPTION;
-            this.initializeDescription();
-        }
+        rawDescription = updateCardText(isBenign) + cardStrings.EXTENDED_DESCRIPTION[1];
+        initializeDescription();
     }
 
     public AbstractCard makeCopy() {

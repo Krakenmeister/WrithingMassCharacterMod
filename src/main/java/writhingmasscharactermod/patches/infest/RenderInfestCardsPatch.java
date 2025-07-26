@@ -5,7 +5,6 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.Hitbox;
@@ -18,7 +17,6 @@ import writhingmasscharactermod.WrithingMassCharacterMod;
 import writhingmasscharactermod.util.InfestUtils;
 import writhingmasscharactermod.util.WrithingCard;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @SpirePatch2(
@@ -62,6 +60,7 @@ public class RenderInfestCardsPatch {
                     infestedCard.unhover();
                 }
 
+                infestedCard.applyPowers();
                 infestedCard.calculateCardDamage(null);
                 infestedCard.render(sb);
             }

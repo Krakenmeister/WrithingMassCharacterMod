@@ -25,6 +25,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import com.esotericsoftware.spine.AnimationState;
 import writhingmasscharactermod.cards.basic.*;
+import writhingmasscharactermod.cards.uncommon.Flagella;
 import writhingmasscharactermod.forms.ChangeFormAction;
 import writhingmasscharactermod.forms.HighForm;
 import writhingmasscharactermod.forms.LowForm;
@@ -34,7 +35,6 @@ import writhingmasscharactermod.util.WrithingCard;
 import writhingmasscharactermod.util.WrithingMassOrb;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 

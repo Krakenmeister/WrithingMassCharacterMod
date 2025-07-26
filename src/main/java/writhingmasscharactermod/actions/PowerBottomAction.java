@@ -1,31 +1,29 @@
 package writhingmasscharactermod.actions;
 
-import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import writhingmasscharactermod.util.WrithingCard;
 
 public class PowerBottomAction extends AbstractGameAction {
-    private final AbstractPlayer player;
-    private final AbstractMonster target;
-    private final CustomCard card;
+    private final WrithingCard card;
 
-    public PowerBottomAction(AbstractPlayer player, AbstractMonster target, CustomCard card) {
-        this.player = player;
+    public PowerBottomAction(AbstractCreature source, AbstractCreature target, WrithingCard card) {
+        this.source = source;
         this.target = target;
         this.card = card;
     }
 
     @Override
     public void update() {
-        card.baseDamage = player.discardPile.size() * 2;
+        card.baseDamage = AbstractDungeon.player.discardPile.size() * 2;
         card.calculateCardDamage(target);
 
         addToTop(new DamageAction(
                 target,
-                new DamageInfo(player, card.damage, DamageInfo.DamageType.NORMAL),
+                new DamageInfo(source, card.damage, DamageInfo.DamageType.NORMAL),
                 AttackEffect.BLUNT_HEAVY
         ));
 

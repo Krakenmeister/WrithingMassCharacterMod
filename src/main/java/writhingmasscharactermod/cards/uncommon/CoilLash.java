@@ -4,7 +4,7 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import writhingmasscharactermod.cards.BaseCard;
-import writhingmasscharactermod.cards.special.Whip;
+import writhingmasscharactermod.cards.common.Whip;
 import writhingmasscharactermod.character.WrithingMassCharacter;
 import writhingmasscharactermod.powers.CoilLashPower;
 import writhingmasscharactermod.util.CardStats;

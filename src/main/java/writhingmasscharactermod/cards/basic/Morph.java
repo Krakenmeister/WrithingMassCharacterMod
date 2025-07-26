@@ -33,7 +33,7 @@ public class Morph extends WrithingCard {
     }
 
     @Override
-    protected String updateCardText(boolean isBenign) {
+    public String updateCardText(boolean isBenign) {
         return cardStrings.DESCRIPTION;
     }
 
@@ -42,7 +42,7 @@ public class Morph extends WrithingCard {
         DamageInfo damageInfo = new DamageInfo(source, damage, DamageInfo.DamageType.NORMAL);
         damageInfo.applyPowers(source, target);
         addToBot(new DamageAction(target, damageInfo, AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-        addToBot(new MutateAction(magicNumber));
+        addToBot(new MutateAction(magicNumber, false));
     }
 
     @Override

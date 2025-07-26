@@ -40,7 +40,7 @@ public class Defend extends WrithingCard {
     }
 
     @Override
-    protected String updateCardText(boolean isBenign) {
+    public String updateCardText(boolean isBenign) {
         if (isBenign) {
             return cardStrings.DESCRIPTION;
         } else {

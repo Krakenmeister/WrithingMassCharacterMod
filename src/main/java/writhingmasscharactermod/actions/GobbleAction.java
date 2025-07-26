@@ -28,7 +28,7 @@ public class GobbleAction extends AbstractGameAction {
         } else {
             this.tickDuration();
             if (this.isDone) {
-                AbstractDungeon.effectList.add(new FlashAtkImgEffect(this.target.hb.cX, this.target.hb.cY, AttackEffect.BLUNT_HEAVY, false));
+                AbstractDungeon.effectList.add(new FlashAtkImgEffect(this.target.hb.cX, this.target.hb.cY, AttackEffect.NONE, false));
                 this.target.damage(this.info);
                 if (this.target.lastDamageTaken > 0) {
                     this.addToTop(new AddRealTemporaryHPAction(this.source, this.source, this.target.lastDamageTaken));

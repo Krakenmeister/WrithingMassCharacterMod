@@ -24,9 +24,7 @@ public class DelugePower extends BasePower implements FormChangePower {
 
     @Override
     public void onFormChange(AbstractForm form) {
-        if (form.ID.equals(MidForm.FORM_ID)) {
-            flash();
-            addToBot(new DrawCardAction(amount));
-        }
+        flash();
+        addToBot(new DrawCardAction(amount));
     }
 }

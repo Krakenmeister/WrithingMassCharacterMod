@@ -1,7 +1,9 @@
 package writhingmasscharactermod.actions;
 
+import com.badlogic.gdx.Gdx;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.Settings;
@@ -12,14 +14,14 @@ public class ClimaxAction extends AbstractGameAction {
     private boolean freeToPlayOnce = false;
     private AbstractCreature source;
     private AbstractCreature target;
-    private DamageInfo selfDamage;
     private DamageInfo attackDamage;
     private int energyOnUse = -1;
+    private float timer;
+    private int actionCounter;
 
-    public ClimaxAction(AbstractCreature source, AbstractCreature target, DamageInfo selfDamage, DamageInfo attackDamage, int amount, boolean freeToPlayOnce, int energyOnUse) {
+    public ClimaxAction(AbstractCreature source, AbstractCreature target, DamageInfo attackDamage, int amount, boolean freeToPlayOnce, int energyOnUse) {
         this.source = source;
         this.target = target;
-        this.selfDamage = selfDamage;
         this.attackDamage = attackDamage;
 
         this.amount = amount;
@@ -27,6 +29,9 @@ public class ClimaxAction extends AbstractGameAction {
         this.duration = Settings.ACTION_DUR_XFAST;
         this.actionType = ActionType.SPECIAL;
         this.energyOnUse = energyOnUse;
+
+        this.timer = 0.1F;
+        this.actionCounter = 0;
     }
 
     public void update() {
@@ -40,19 +45,53 @@ public class ClimaxAction extends AbstractGameAction {
             AbstractDungeon.player.getRelic("Chemical X").flash();
         }
 
-        if (effect > 0) {
-            for(int i = 0; i < amount * effect; ++i) {
-                addToTop(new DamageAction(target, attackDamage, true));
+        if (actionCounter < amount * effect) {
+            if (timer > 0F) {
+                timer -= Gdx.graphics.getDeltaTime();
+            } else {
+                timer = 0.1F;
+                if (this.target.currentHealth > 0) {
+                    this.target.damage(attackDamage);
+                }
+                if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
+                    AbstractDungeon.actionManager.clearPostCombatActions();
+                    this.isDone = true;
+                }
+                actionCounter++;
             }
-            /*for(int i = 0; i < amount * effect; ++i) {
-                addToTop(new DamageAction(source, selfDamage, true));
-            }*/
-
+        } else {
             if (!this.freeToPlayOnce) {
                 AbstractDungeon.player.energy.use(EnergyPanel.totalCount);
             }
+            this.isDone = true;
         }
 
-        this.isDone = true;
+
+//        if (effect > 0) {
+//            for (int i = 0; i < amount * effect; ++i) {
+//                if (timer > 0F) {
+//                    timer -= Gdx.graphics.getDeltaTime();
+//                } else {
+//                    timer = 0.1F;
+//                    if (this.target.currentHealth > 0) {
+//                        this.target.damage(attackDamage);
+//                    }
+//                    if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
+//                        AbstractDungeon.actionManager.clearPostCombatActions();
+//                    }
+//                }
+//
+//            }
+//
+////            for(int i = 0; i < amount * effect; ++i) {
+////                addToTop(new DamageAction(target, attackDamage, true));
+////            }
+//
+//            if (!this.freeToPlayOnce) {
+//                AbstractDungeon.player.energy.use(EnergyPanel.totalCount);
+//            }
+//        }
+//
+//        this.isDone = true;
     }
 }

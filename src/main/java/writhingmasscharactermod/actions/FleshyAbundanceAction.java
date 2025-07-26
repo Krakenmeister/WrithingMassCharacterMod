@@ -2,12 +2,12 @@ package writhingmasscharactermod.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.HealAction;
+import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
 public class FleshyAbundanceAction extends AbstractGameAction {
-    public int[] multiDamage;
     private boolean freeToPlayOnce = false;
     private AbstractPlayer p;
     private int energyOnUse = -1;
@@ -34,7 +34,11 @@ public class FleshyAbundanceAction extends AbstractGameAction {
 
         if (effect > 0) {
             for(int i = 0; i < effect; ++i) {
-                this.addToBot(new HealAction(this.p, this.p, this.amount));
+                if (amount > 0) {
+                    addToBot(new HealAction(p, p, amount));
+                } else {
+                    addToBot(new LoseHPAction(p, p, -1 * amount));
+                }
             }
 
             if (!this.freeToPlayOnce) {

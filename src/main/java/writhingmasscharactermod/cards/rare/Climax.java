@@ -1,15 +1,16 @@
 package writhingmasscharactermod.cards.rare;
 
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import writhingmasscharactermod.actions.ClimaxAction;
-import writhingmasscharactermod.cards.BaseCard;
 import writhingmasscharactermod.character.WrithingMassCharacter;
 import writhingmasscharactermod.util.CardStats;
+import writhingmasscharactermod.util.WrithingCard;
 
-public class Climax extends BaseCard {
+public class Climax extends WrithingCard {
     public static final String ID = makeID("Climax");
     private static final CardStats info = new CardStats(
             WrithingMassCharacter.Meta.CARD_COLOR,
@@ -26,7 +27,19 @@ public class Climax extends BaseCard {
     private static final int UPG_MULTIPLIER = 1;
 
     public Climax() {
-        super(ID, info);
+        this(true, true);
+    }
+
+    public Climax(boolean isBenign, boolean previewCards) {
+        super(ID, info, isBenign);
+
+        setBenign(isBenign);
+        setMutable(true);
+        setInert(true);
+
+        if (previewCards) {
+            cardsToPreview = new Climax(!isBenign, false);
+        }
 
         setDamage(DAMAGE);
         setMagic(MAGIC_NUMBER);
@@ -34,25 +47,55 @@ public class Climax extends BaseCard {
 
         setExhaust(true);
     }
+//
+//    @Override
+//    public void use(AbstractPlayer p, AbstractMonster m) {
+//        DamageInfo attackDamage = new DamageInfo(m, damage, damageTypeForTurn);
+//        addToBot(new ClimaxAction(p, m, attackDamage, customVar("climaxmultiplier"), freeToPlayOnce, energyOnUse));
+//    }
 
     @Override
-    public void use(AbstractPlayer p, AbstractMonster m) {
-        DamageInfo selfDamage = new DamageInfo(p, magicNumber, damageTypeForTurn);
-        DamageInfo attackDamage = new DamageInfo(m, damage, damageTypeForTurn);
-        addToBot(new ClimaxAction(p, m, selfDamage, attackDamage, customVar("climaxmultiplier"), freeToPlayOnce, energyOnUse));
-    }
-
-    /*@Override
-    public void applyPowers() {
-        super.applyPowers();
-        magicNumber = GeneralUtils.applyDamageCalculations(AbstractDungeon.player, DamageInfo.DamageType.NORMAL, baseMagicNumber);
-        isMagicNumberModified = (magicNumber != baseMagicNumber);
+    public String updateCardText(boolean isBenign) {
+        if (isBenign) {
+            return cardStrings.DESCRIPTION;
+        } else {
+            return cardStrings.EXTENDED_DESCRIPTION[0];
+        }
     }
 
     @Override
-    public void calculateCardDamage(AbstractMonster mo) {
-        super.calculateCardDamage(mo);
-        magicNumber = GeneralUtils.applyDamageCalculations(AbstractDungeon.player, DamageInfo.DamageType.NORMAL, baseMagicNumber);
-        isMagicNumberModified = (magicNumber != baseMagicNumber);
-    }*/
+    public void setBenign(boolean isBenign) {
+        super.setBenign(isBenign);
+
+        if (isBenign) {
+            this.target = CardTarget.ENEMY;
+        } else {
+            this.target = CardTarget.SELF;
+        }
+    }
+
+    @Override
+    public void benignUse(AbstractCreature source, AbstractCreature target) {
+        DamageInfo attackDamage = new DamageInfo(source, damage, DamageInfo.DamageType.NORMAL);
+        addToBot(new ClimaxAction(source, target, attackDamage, customVar("climaxmultiplier"), freeToPlayOnce, energyOnUse));
+    }
+
+    @Override
+    public void malignantUse(AbstractCreature source, AbstractCreature target) {
+        DamageInfo attackDamage = new DamageInfo(source, damage, DamageInfo.DamageType.NORMAL);
+        addToBot(new ClimaxAction(source, source, attackDamage, customVar("climaxmultiplier"), freeToPlayOnce, energyOnUse));
+    }
+
+    @Override
+    public void calculateCardDamage(AbstractMonster m) {
+        if (!isBenign) {
+            calculateCardDamage(owner);
+        } else {
+            if (owner instanceof AbstractPlayer) {
+                calculateCardDamage((AbstractCreature) m);
+            } else {
+                calculateCardDamage(AbstractDungeon.player);
+            }
+        }
+    }
 }

@@ -27,6 +27,14 @@
       " times."
     ]
   },
+  "${modID}:Mutualism": {
+    "NAME": "Mutualism",
+    "DESCRIPTIONS": [
+      "Whenever enemy gains HP, you gain equal HP.",
+      "Whenever enemy gains HP, you gain equal HP #b",
+      " times."
+    ]
+  },
   "${modID}:Vitality": {
     "NAME": "Vitality",
     "DESCRIPTIONS": [
@@ -120,6 +128,62 @@
     "NAME": "Cocoon",
     "DESCRIPTIONS": [
       "When you end your turn in #yMolt #yForm, #yRetain your hand."
+    ]
+  },
+  "${modID}:Lash": {
+    "NAME": "Lash",
+    "DESCRIPTIONS": [
+      "#yWhips deal #b",
+      " additional damage."
+    ]
+  },
+  "${modID}:LoseBuffer": {
+    "NAME": "Buffer Down",
+    "DESCRIPTIONS": [
+      "At the end of your turn, lose #b",
+      " #yBuffer"
+    ]
+  },
+  "${modID}:Cannibalism": {
+    "NAME": "Cannibalism",
+    "DESCRIPTIONS": [
+      "When #yInfested cards would return to hand, they are instead played by their #yHost and sent to your Discard or Exhaust pile."
+    ]
+  },
+  "${modID}:Antibodies": {
+    "NAME": "Antibodies",
+    "DESCRIPTIONS": [
+      "At the start of your turn, gain #b",
+      " #yTemporary #yBuffer."
+    ]
+  },
+  "${modID}:DanseMacabre": {
+    "NAME": "Danse Vivante",
+    "DESCRIPTIONS": [
+      "At the start of your turn, add #b1 #yBenign #yWhip into your hand. It #yExhausts.",
+      "At the start of your turn add #b",
+      " #yBenign #yWhips into your hand. They #yExhaust."
+    ]
+  },
+  "${modID}:DanseMacabreMalignant": {
+    "NAME": "Danse Macabre",
+    "DESCRIPTIONS": [
+      "At the start of your turn, add #b1 #yMalignant #yWhip into your hand. It #yExhausts.",
+      "At the start of your turn add #b",
+      " #yMalignant #yWhips into your hand. They #yExhaust."
+    ]
+  },
+  "${modID}:Funishment": {
+    "NAME": "Funishment",
+    "DESCRIPTIONS": [
+      "Whenever the #yHost that applied this Power plays a #yMalignant card, gain #b",
+      " HP."
+    ]
+  },
+  "${modID}:Gestation": {
+    "NAME": "Gestation",
+    "DESCRIPTIONS": [
+      "When you #yInfest a card, #yUpgrade it."
     ]
   }
 }

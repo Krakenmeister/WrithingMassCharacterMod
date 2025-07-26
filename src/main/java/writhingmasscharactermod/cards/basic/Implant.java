@@ -1,12 +1,8 @@
 package writhingmasscharactermod.cards.basic;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import writhingmasscharactermod.actions.InfestAction;
-import writhingmasscharactermod.actions.MutateAction;
 import writhingmasscharactermod.character.WrithingMassCharacter;
 import writhingmasscharactermod.util.CardStats;
 import writhingmasscharactermod.util.WrithingCard;
@@ -35,7 +31,7 @@ public class Implant extends WrithingCard {
     }
 
     @Override
-    protected String updateCardText(boolean isBenign) {
+    public String updateCardText(boolean isBenign) {
         return cardStrings.DESCRIPTION;
     }
 

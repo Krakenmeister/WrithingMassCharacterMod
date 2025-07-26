@@ -1,21 +1,13 @@
 package writhingmasscharactermod.cards.common;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.*;
-import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.vfx.combat.CleaveEffect;
 import writhingmasscharactermod.actions.DamageEveryoneAction;
-import writhingmasscharactermod.cards.BaseCard;
 import writhingmasscharactermod.character.WrithingMassCharacter;
-import writhingmasscharactermod.powers.BleedPower;
 import writhingmasscharactermod.util.CardStats;
-import writhingmasscharactermod.util.GeneralUtils;
 import writhingmasscharactermod.util.WrithingCard;
 
 public class Debauchery extends WrithingCard {
@@ -55,7 +47,7 @@ public class Debauchery extends WrithingCard {
     }
 
     @Override
-    protected String updateCardText(boolean isBenign) {
+    public String updateCardText(boolean isBenign) {
         if (isBenign) {
             return cardStrings.DESCRIPTION;
         } else {

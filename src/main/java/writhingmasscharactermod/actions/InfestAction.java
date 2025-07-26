@@ -52,11 +52,9 @@ public class InfestAction extends AbstractGameAction {
             }
 
             p.hand.group.removeAll(inertCards);
-            if (p.hand.group.size() > amount) {
-                AbstractDungeon.handCardSelectScreen.open(TEXT[0], amount, false, false, false, false);
-                this.tickDuration();
-                return;
-            }
+            AbstractDungeon.handCardSelectScreen.open(TEXT[0], Math.min(p.hand.group.size(), amount), false, false, false, false);
+            this.tickDuration();
+            return;
         }
 
         if (!AbstractDungeon.handCardSelectScreen.wereCardsRetrieved) {

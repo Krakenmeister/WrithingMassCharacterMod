@@ -3,7 +3,6 @@ package writhingmasscharactermod.util;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -19,8 +18,10 @@ public abstract class WrithingCard extends BaseCard {
     public boolean isBenign = true;
     public boolean isMutable = false;
     public boolean isInert = false;
+    public boolean upgradePreviews = true;
 
     public AbstractCreature owner = AbstractDungeon.player;
+    public boolean isInfesting = false;
 
     public WrithingCard(String ID, CardStats info, boolean isBenign) {
         super(ID, info);
@@ -214,7 +215,7 @@ public abstract class WrithingCard extends BaseCard {
         return super.freeToPlay();
     }
 
-    protected abstract String updateCardText(boolean isBenign);
+    public abstract String updateCardText(boolean isBenign);
 
     public void triggerOnGlowCheck() {
         if (isBenign) {
@@ -241,10 +242,23 @@ public abstract class WrithingCard extends BaseCard {
     }
 
     public void upgrade() {
-        if (!this.upgraded && this.cardsToPreview != null) {
+        if (!this.upgraded && this.cardsToPreview != null && isMutable && upgradePreviews) {
             this.cardsToPreview.upgrade();
         }
 
         super.upgrade();
+    }
+
+    @Override
+    public void calculateCardDamage(AbstractMonster m) {
+        if (baseDamage <= 0) {
+            return;
+        }
+
+        if (owner instanceof AbstractPlayer) {
+            calculateCardDamage((AbstractCreature) m);
+        } else {
+            calculateCardDamage(AbstractDungeon.player);
+        }
     }
 }

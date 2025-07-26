@@ -19,11 +19,14 @@ public class MutateAction extends AbstractGameAction {
     private AbstractPlayer p;
     private List<AbstractCard> immutableCards = new ArrayList<>();
 
-    public MutateAction(int amount) {
+    private boolean anyNumber;
+
+    public MutateAction(int amount, boolean anyNumber) {
         this.amount = amount;
         actionType = ActionType.CARD_MANIPULATION;
         duration = Settings.ACTION_DUR_FAST;
         p = AbstractDungeon.player;
+        this.anyNumber = anyNumber;
     }
 
     public void update() {
@@ -43,7 +46,7 @@ public class MutateAction extends AbstractGameAction {
                 return;
             }
 
-            if (p.hand.group.size() - immutableCards.size() <= amount) {
+            if (p.hand.group.size() - immutableCards.size() <= amount && !anyNumber) {
                 for (AbstractCard c : p.hand.group) {
                     if (c instanceof WrithingCard) {
                         if (((WrithingCard)c).isMutable) {
@@ -58,8 +61,8 @@ public class MutateAction extends AbstractGameAction {
             }
 
             p.hand.group.removeAll(immutableCards);
-            if (p.hand.group.size() > amount) {
-                AbstractDungeon.handCardSelectScreen.open(TEXT[0], amount, false, false, false, false);
+            if (p.hand.group.size() > amount || anyNumber) {
+                AbstractDungeon.handCardSelectScreen.open(TEXT[0], amount, anyNumber, false, false, false);
                 this.tickDuration();
                 return;
             } else {

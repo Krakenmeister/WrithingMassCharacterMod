@@ -132,7 +132,7 @@
     "NAMES": [
       "inert"
     ],
-    "DESCRIPTION": "This card cannot be #yInfested"
+    "DESCRIPTION": "This card cannot be #yInfested. All X-cost cards and Powers are #yInert."
   },
   {
     "PROPER_NAME": "Infest",
@@ -140,5 +140,41 @@
       "infest"
     ],
     "DESCRIPTION": "Give cards to enemies. Enemies will play ALL #yInfested cards at the end of their turn. Enemies can hold more #yInfested cards the more Max HP they have. Once capacity is reached, the oldest #yInfested card will return to hand."
+  },
+  {
+    "PROPER_NAME": "Infested",
+    "NAMES": [
+      "infested"
+    ],
+    "DESCRIPTION": "A card that has been given to an enemy. Enemies will play ALL #yInfested cards at the end of their turn."
+  },
+  {
+    "PROPER_NAME": "Malignant",
+    "NAMES": [
+      "malignant"
+    ],
+    "DESCRIPTION": "A #yMutable card with generally adverse effects."
+  },
+  {
+    "PROPER_NAME": "Benign",
+    "NAMES": [
+      "benign"
+    ],
+    "DESCRIPTION": "A #yMutable card with generally positive effects. Any non - #yMutable card is considered #yBenign."
+  },
+  {
+    "PROPER_NAME": "Temporary Buffer",
+    "NAMES": [
+      "temporary buffer",
+      "temporary_buffer"
+    ],
+    "DESCRIPTION": "Prevents the next time you would lose HP. Wears off at the end of your turn."
+  },
+  {
+    "PROPER_NAME": "Host",
+    "NAMES": [
+      "host"
+    ],
+    "DESCRIPTION": "The player or enemy holding a given card."
   }
 ]

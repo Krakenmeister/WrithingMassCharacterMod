@@ -1,15 +1,11 @@
 package writhingmasscharactermod.cards.common;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.HealAction;
 import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import writhingmasscharactermod.character.WrithingMassCharacter;
 import writhingmasscharactermod.util.CardStats;
 import writhingmasscharactermod.util.WrithingCard;
@@ -25,7 +21,7 @@ public class Aftercare extends WrithingCard {
     );
 
     private static final int MAGIC_NUMBER = 2;
-    private static final int UPG_MAGIC_NUMBER = 1;
+    private static final int UPG_MAGIC_NUMBER = 2;
 
     public Aftercare() {
         this(true, true);
@@ -45,7 +41,7 @@ public class Aftercare extends WrithingCard {
     }
 
     @Override
-    protected String updateCardText(boolean isBenign) {
+    public String updateCardText(boolean isBenign) {
         if (isBenign) {
             return cardStrings.DESCRIPTION;
         } else {

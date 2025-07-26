@@ -5,14 +5,13 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import writhingmasscharactermod.cards.BaseCard;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import writhingmasscharactermod.character.WrithingMassCharacter;
 import writhingmasscharactermod.powers.ProboscisPower;
 import writhingmasscharactermod.util.CardStats;
+import writhingmasscharactermod.util.WrithingCard;
 
-public class Proboscis extends BaseCard {
+public class Proboscis extends WrithingCard {
     public static final String ID = makeID("Proboscis");
     private static final CardStats info = new CardStats(
             WrithingMassCharacter.Meta.CARD_COLOR,
@@ -22,14 +21,21 @@ public class Proboscis extends BaseCard {
             2
     );
 
-    private static final int DAMAGE = 6;
-    private static final int UPG_DAMAGE = 4;
+    private static final int DAMAGE = 10;
+    private static final int UPG_DAMAGE = 3;
 
     private static final int MAGIC_NUMBER = 2;
     private static final int UPG_MAGIC_NUMBER = 1;
 
     public Proboscis() {
-        super(ID, info);
+        this(true);
+    }
+
+    public Proboscis(boolean isBenign) {
+        super(ID, info, isBenign);
+
+        setBenign(isBenign);
+        setInert(true);
 
         setDamage(DAMAGE, UPG_DAMAGE);
         setMagic(MAGIC_NUMBER, UPG_MAGIC_NUMBER);
@@ -38,8 +44,18 @@ public class Proboscis extends BaseCard {
     }
 
     @Override
-    public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
-        addToBot(new ApplyPowerAction(m, p, new ProboscisPower(m, p, magicNumber)));
+    public String updateCardText(boolean isBenign) {
+        return cardStrings.DESCRIPTION;
+    }
+
+    @Override
+    public void benignUse(AbstractCreature source, AbstractCreature target) {
+        addToBot(new DamageAction(target, new DamageInfo(source, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
+        addToBot(new ApplyPowerAction(target, source, new ProboscisPower(target, source, magicNumber)));
+    }
+
+    @Override
+    public void malignantUse(AbstractCreature source, AbstractCreature target) {
+        benignUse(source, target);
     }
 }
