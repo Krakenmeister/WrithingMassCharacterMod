@@ -24,7 +24,7 @@ public class Brat extends WrithingCard {
     );
 
     private static final int BLOCK = 14;
-    private static final int UPG_BLOCK = 5;
+    private static final int UPG_BLOCK = 4;
 
     private static final int MAGIC_NUMBER = 3;
     private static final int UPG_MAGIC_NUMBER = 1;
